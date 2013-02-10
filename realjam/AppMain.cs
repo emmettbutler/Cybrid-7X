@@ -20,17 +20,11 @@ namespace realjam
       var scene = new Scene();
       scene.Camera.SetViewFromViewport();
 
-      var sprite = new Cell();
-
-      sprite.CenterSprite();
-
-      sprite.Position = scene.Camera.CalcBounds().Center;
-
-      scene.AddChild(sprite);
+      SpawnManager spawnmngr = new SpawnManager(scene);
 
       Director.Instance.RunWithScene(scene, true);
 
-      Scheduler.Instance.Schedule(scene,sprite.Tick,0.0f,false);
+      Scheduler.Instance.Schedule(scene,spawnmngr.FrameUpdate,0.0f,false);
 
 			while (!Input2.GamePad0.Cross.Press) {
         SystemEvents.CheckEvents();

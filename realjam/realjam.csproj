@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="AppMain.cs" />
     <Compile Include="Cell.cs" />
+    <Compile Include="SpawnManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ShaderProgram Include="shaders\Simple.fcg" />
