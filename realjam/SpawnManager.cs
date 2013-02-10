@@ -9,24 +9,41 @@ namespace realjam {
   public class SpawnManager {
 
     public Scene scene {get; set;}
-    private Cell sprite;
     public List<Cell> cells {get; set;}
+    private List<Cell> pending;
 
     public SpawnManager(Scene scene) {
+      this.scene = scene;
       cells = new List<Cell>();
-      sprite = new Cell(scene.Camera.CalcBounds().Center);
+      pending = new List<Cell>();
+      SpawnCell(scene.Camera.CalcBounds().Center);
+    }
+
+    public void SpawnCell(Vector2 pos){
+      Cell sprite = new Cell(pos);
 
       sprite.CenterSprite();
-
       scene.AddChild(sprite);
-      cells.Add(sprite);
+      pending.Add(sprite);
     }
 
     public void FrameUpdate(float dt){
       foreach (Cell c in cells){
         c.Tick(dt);
 
+        //do magic & make love babbies
+
+        if (c.getTimeAlive() > c.period && !c.hasReproduced){
+          //create new cell & add to pending list
+          SpawnCell(new Vector2 (c.Position.X+50, c.Position.Y-50));
+          c.hasReproduced = true;
+        }
       }
+      foreach (Cell c in pending){
+        //add the pending cells to the main list
+        cells.Add(c);
+      }
+      pending.Clear();
     }
   }
 }
