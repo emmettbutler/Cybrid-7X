@@ -16,7 +16,7 @@ namespace realjam {
     public Cell(Vector2 pos) {
       var texture = new TextureInfo( new Texture2D("/Application/assets/eyebulb.png",false));
       TextureInfo = texture;
-      Quad.S = texture.TextureSizef;
+      Quad.S = texture.TextureSizef/4;
 
       hasReproduced = false;
 

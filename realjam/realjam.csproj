@@ -40,6 +40,7 @@
     <Compile Include="AppMain.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="SpawnManager.cs" />
+    <Compile Include="Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <ShaderProgram Include="shaders\Simple.fcg" />

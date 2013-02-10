@@ -11,6 +11,7 @@ namespace realjam {
     public Scene scene {get; set;}
     public List<Cell> cells {get; set;}
     private List<Cell> pending;
+    private int counter;
 
     public SpawnManager(Scene scene) {
       this.scene = scene;
@@ -36,8 +37,11 @@ namespace realjam {
         if (c.getTimeAlive() > c.period && !c.hasReproduced){
           //create new cell & add to pending list
           SpawnCell(new Vector2 (c.Position.X+50, c.Position.Y-50));
+          SpawnCell(new Vector2 (c.Position.X-50, c.Position.Y-50));
           c.hasReproduced = true;
+          counter += 2;
         }
+        Console.WriteLine(counter);
       }
       foreach (Cell c in pending){
         //add the pending cells to the main list
