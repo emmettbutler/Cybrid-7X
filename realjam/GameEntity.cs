@@ -38,6 +38,7 @@ namespace realjam {
     }
 
     public virtual float GetRadius(){
+      //TODO - get the actual radius
       return 10;
     }
 

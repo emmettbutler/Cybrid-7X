@@ -15,6 +15,14 @@ namespace realjam {
       Quad.S = texture.TextureSizef/2;
     }
 
+    public override void CollideTo (GameEntity instance){
+      Console.WriteLine("i'm a player getting collided to");
+    }
+
+    public override void CollideFrom (GameEntity instance){
+      Console.WriteLine("i'm a player getting collided from");
+    }
+
     public override void Tick(float dt){
       base.Tick(dt);
       Vector2 delta = Vector2.Zero;

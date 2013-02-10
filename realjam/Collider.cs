@@ -46,7 +46,6 @@ namespace realjam {
     }
 
     public void Collide(){
-      Console.WriteLine("SENPAI");
 
       for(int i = 0; i < collisionEntries.Count; ++i){
         for(int j = 0; j < collisionEntries.Count; ++j){
