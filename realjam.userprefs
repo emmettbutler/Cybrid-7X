@@ -1,6 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument=".gitignore">
+    <Files>
+      <File FileName="realjam\AppMain.cs" Line="19" Column="4" />
+      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\Player.cs" Line="74" Column="12" />
+      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\Title.cs" Line="1" Column="1" />
+      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\ActionGameDemo.cs" Line="77" Column="19" />
+      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\HelloSprite\HelloSprite.cs" Line="57" Column="38" />
+      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\EnemyZombie.cs" Line="87" Column="32" />
+      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\EnemySlime.cs" Line="1" Column="1" />
+      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\EnemyRedSlime.cs" Line="9" Column="28" />
+      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\PhysicsGameEntity.cs" Line="19" Column="15" />
+      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\GameEntity.cs" Line="1" Column="1" />
+      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\Game.cs" Line="3" Column="1" />
+      <File FileName=".gitignore" Line="165" Column="9" />
+      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\PlayerInput.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
