@@ -1,48 +1,47 @@
 using System;
-using System.Collections.Generic;
 
 using Sce.PlayStation.Core;
 using Sce.PlayStation.Core.Environment;
 using Sce.PlayStation.Core.Graphics;
 using Sce.PlayStation.Core.Input;
+using Sce.PlayStation.HighLevel.GameEngine2D;
+using Sce.PlayStation.HighLevel.GameEngine2D.Base;
 
 namespace realjam
 {
 	public class AppMain
 	{
-		private static GraphicsContext graphics;
 		
 		public static void Main (string[] args)
 		{
-			Initialize ();
+      Director.Initialize();
+      Director.Instance.GL.Context.SetClearColor(Colors.Cyan);
 
-			while (true) {
-				SystemEvents.CheckEvents ();
-				Update ();
-				Render ();
+      var scene = new Scene();
+      scene.Camera.SetViewFromViewport();
+
+      var sprite = new Cell();
+
+      sprite.CenterSprite();
+
+      sprite.Position = scene.Camera.CalcBounds().Center;
+
+      scene.AddChild(sprite);
+
+      Director.Instance.RunWithScene(scene, true);
+
+      Scheduler.Instance.Schedule(scene,sprite.Tick,0.0f,false);
+
+			while (!Input2.GamePad0.Cross.Press) {
+        SystemEvents.CheckEvents();
+        Director.Instance.Update();
+        Director.Instance.Render();
+
+        Director.Instance.GL.Context.SwapBuffers();
+        Director.Instance.PostSwap();
 			}
-		}
 
-		public static void Initialize ()
-		{
-			// Set up the graphics system
-			graphics = new GraphicsContext ();
-		}
-
-		public static void Update ()
-		{
-			// Query gamepad for current state
-			var gamePadData = GamePad.GetData (0);
-		}
-
-		public static void Render ()
-		{
-			// Clear the screen
-			graphics.SetClearColor (0.0f, 0.0f, 0.0f, 0.0f);
-			graphics.Clear ();
-
-			// Present the screen
-			graphics.SwapBuffers ();
+      Director.Terminate();
 		}
 	}
 }
