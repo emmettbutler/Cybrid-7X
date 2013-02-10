@@ -9,11 +9,13 @@ namespace realjam {
   public class SpawnManager {
 
     public Scene scene {get; set;}
+    public Collider collider {get; set;}
     public List<Cell> cells {get; set;}
     private List<Cell> pending;
     private int counter;
 
-    public SpawnManager(Scene scene) {
+    public SpawnManager(Scene scene, Collider collider) {
+      this.collider = collider;
       this.scene = scene;
       cells = new List<Cell>();
       pending = new List<Cell>();
@@ -23,6 +25,7 @@ namespace realjam {
     public void SpawnCell(Vector2 pos){
       Cell sprite = new Cell(pos);
 
+      collider.add(sprite);
       sprite.CenterSprite();
       scene.AddChild(sprite);
       pending.Add(sprite);

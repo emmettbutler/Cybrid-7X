@@ -42,6 +42,7 @@
     <Compile Include="SpawnManager.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="GameEntity.cs" />
+    <Compile Include="Collider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ShaderProgram Include="shaders\Simple.fcg" />

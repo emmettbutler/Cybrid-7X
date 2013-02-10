@@ -14,6 +14,7 @@ namespace realjam {
       TextureInfo = texture;
       Quad.S = texture.TextureSizef/2;
     }
+
     public override void Tick(float dt){
       base.Tick(dt);
       Vector2 delta = Vector2.Zero;

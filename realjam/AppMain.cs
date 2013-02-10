@@ -20,10 +20,13 @@ namespace realjam
       var scene = new Scene();
       scene.Camera.SetViewFromViewport();
 
+      var collider = new Collider();
+
       var player = new Player(new Vector2(10,10));
       scene.AddChild(player);
+      collider.add(player);
 
-      SpawnManager spawnmngr = new SpawnManager(scene);
+      SpawnManager spawnmngr = new SpawnManager(scene,collider);
 
       Director.Instance.RunWithScene(scene, true);
 
@@ -34,6 +37,8 @@ namespace realjam
         SystemEvents.CheckEvents();
         Director.Instance.Update();
         Director.Instance.Render();
+
+        collider.Collide();
 
         Director.Instance.GL.Context.SwapBuffers();
         Director.Instance.PostSwap();

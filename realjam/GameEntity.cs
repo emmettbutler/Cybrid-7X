@@ -25,6 +25,22 @@ namespace realjam {
       return ttime;
     }
 
+    public virtual void CollideTo(GameEntity instance){
+      throw new NotImplementedException();
+    }
+
+    public virtual void CollideFrom(GameEntity instance){
+      throw new NotImplementedException();
+    }
+
+    public virtual Vector2 GetCenter(){
+      return Position;
+    }
+
+    public virtual float GetRadius(){
+      return 10;
+    }
+
     public virtual void Tick(float dt) {
       TimeSpan t = DateTime.UtcNow - borntime;
       ttime = (float) t.TotalMilliseconds/1000.0f;
