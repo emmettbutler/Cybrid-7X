@@ -56,5 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\eyebulb.png" />
+    <Content Include="assets\robot.png" />
   </ItemGroup>
 </Project>

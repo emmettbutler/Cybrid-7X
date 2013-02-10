@@ -22,6 +22,7 @@ namespace realjam {
     }
 
     public override void Tick(float dt) {
+      base.Tick(dt);
       Position = new Vector2(anchor.X+20*(float)System.Math.Sin(ttime*10),anchor.Y);
     }
   }

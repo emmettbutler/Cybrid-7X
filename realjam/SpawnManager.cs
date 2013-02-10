@@ -41,7 +41,7 @@ namespace realjam {
           c.hasReproduced = true;
           counter += 2;
         }
-        Console.WriteLine(counter);
+        //Console.WriteLine(counter);
       }
       foreach (Cell c in pending){
         //add the pending cells to the main list

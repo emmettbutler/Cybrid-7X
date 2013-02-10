@@ -28,6 +28,7 @@ namespace realjam
       Director.Instance.RunWithScene(scene, true);
 
       Scheduler.Instance.Schedule(scene,spawnmngr.FrameUpdate,0.0f,false);
+      Scheduler.Instance.Schedule(scene,player.Tick,0.0f,false);
 
 			while (!Input2.GamePad0.Cross.Press) {
         SystemEvents.CheckEvents();
