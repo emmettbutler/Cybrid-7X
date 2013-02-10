@@ -20,6 +20,9 @@ namespace realjam
       var scene = new Scene();
       scene.Camera.SetViewFromViewport();
 
+      var player = new Player(new Vector2(10,10));
+      scene.AddChild(player);
+
       SpawnManager spawnmngr = new SpawnManager(scene);
 
       Director.Instance.RunWithScene(scene, true);

@@ -5,23 +5,15 @@ using Sce.PlayStation.HighLevel.GameEngine2D.Base;
 using Sce.PlayStation.Core.Graphics;
 
 namespace realjam {
-  public class Cell:SpriteUV {
+  public class Cell:GameEntity {
 
-    public DateTime borntime;
     public Vector2 anchor;
-    private float ttime;
     public Boolean hasReproduced {get; set;}
     public float period {get; set;}
 
-    public Cell(Vector2 pos) {
-      var texture = new TextureInfo( new Texture2D("/Application/assets/eyebulb.png",false));
-      TextureInfo = texture;
+    public Cell(Vector2 pos) : base(pos){
       Quad.S = texture.TextureSizef/4;
-
       hasReproduced = false;
-
-      borntime = DateTime.UtcNow;
-      Position = pos;
       anchor = Position;
 
       Random rng = new Random();
@@ -29,13 +21,7 @@ namespace realjam {
 
     }
 
-    public float getTimeAlive(){
-      return ttime;
-    }
-
-    public virtual void Tick(float dt) {
-      TimeSpan t = DateTime.UtcNow - borntime;
-      ttime = (float) t.TotalMilliseconds/1000.0f;
+    public override void Tick(float dt) {
       Position = new Vector2(anchor.X+20*(float)System.Math.Sin(ttime*10),anchor.Y);
     }
   }
