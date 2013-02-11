@@ -1,0 +1,14 @@
+TODO list
+---------
+cells should know about their surrounding cells and generate accordingly
+should read the attributes of surroundings
+maybe two cells that pair and always move toward each other??
+differentiate somehow between cells and selectively generate offspring
+kill old cells
+start at point A onscreen, move to an offscreen point B with a follow camera
+particle effects
+sprint button (can't use constantly though)
+
+Reach features
+--------------
+make rivers or rocks, something that can't be affected by player but affects position and movement

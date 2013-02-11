@@ -59,4 +59,7 @@
     <Content Include="assets\eyebulb.png" />
     <Content Include="assets\robot.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="TODO.txt" />
+  </ItemGroup>
 </Project>
