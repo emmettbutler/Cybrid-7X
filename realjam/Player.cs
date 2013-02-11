@@ -8,6 +8,7 @@ namespace realjam {
   public class Player:GameEntity {
 
     public const int runSpeed = 5;
+    public Boolean isholding = false;
 
     public Player(Vector2 pos) : base(pos){
       texture = new TextureInfo( new Texture2D("/Application/assets/robot.png",false));
@@ -17,6 +18,11 @@ namespace realjam {
 
     public override void CollideTo (GameEntity instance){
       instance.Position += (instance.Position-Position)*.1f;
+
+      if(Input2.GamePad0.Circle.Down && !isholding){
+        instance.Position = Position;
+        isholding = true;
+      }
     }
 
     public override void CollideFrom (GameEntity instance){
