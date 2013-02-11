@@ -8,7 +8,7 @@ namespace realjam {
   public class Player:GameEntity {
 
     public const int runSpeed = 5;
-    public Boolean isholding = false;
+    public Cell grabbing = null;
 
     public Player(Vector2 pos) : base(pos){
       texture = new TextureInfo( new Texture2D("/Application/assets/robot.png",false));
@@ -17,11 +17,14 @@ namespace realjam {
     }
 
     public override void CollideTo (GameEntity instance){
-      instance.Position += (instance.Position-Position)*.1f;
-
-      if(Input2.GamePad0.Circle.Down && !isholding){
-        instance.Position = Position;
-        isholding = true;
+      Boolean canGrab = (instance == grabbing || grabbing == null);
+      if(instance is Cell && Input2.GamePad0.Circle.Down && canGrab){
+        Cell c = (Cell)instance;
+        c.Position = Position;
+        c.grabbed = true;
+        grabbing = c;
+      } else {
+        instance.Position += (instance.Position-Position)*.2f;
       }
     }
 
@@ -45,6 +48,11 @@ namespace realjam {
         delta += new Vector2(0,-runSpeed);
       }
       Position += delta;
+
+      if(!Input2.GamePad0.Circle.Down && grabbing != null){
+        grabbing.grabbed = false;
+        grabbing = null;
+      }
     }
   }
 }

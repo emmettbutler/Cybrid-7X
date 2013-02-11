@@ -22,7 +22,7 @@ namespace realjam
 
       var collider = new Collider();
 
-      var player = new Player(new Vector2(10,10));
+      var player = new Player(new Vector2(40,10));
       scene.AddChild(player);
       collider.add(player);
 
@@ -38,6 +38,7 @@ namespace realjam
         Director.Instance.Update();
         Director.Instance.Render();
 
+        collider.CollideWalls(scene);
         collider.Collide();
 
         Director.Instance.GL.Context.SwapBuffers();

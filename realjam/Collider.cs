@@ -45,8 +45,27 @@ namespace realjam {
       collisionEntries.Add(entry);
     }
 
-    public void Collide(){
+    public void CollideWalls(Scene scene){
+      Bounds2 bounds = scene.Camera.CalcBounds();
+      for(int i = 0; i < collisionEntries.Count; ++i){
+        CollisionEntry entry = collisionEntries[i];
+        Vector2 center = entry.center();
 
+        if(center.X < bounds.Min.X + entry.radius()){
+          entry.owner.Position = new Vector2(bounds.Min.X + entry.radius(), entry.owner.Position.Y);
+        } else if(center.X > bounds.Max.X - entry.radius()){
+          entry.owner.Position = new Vector2(bounds.Max.X - entry.radius(), entry.owner.Position.Y);
+        }
+
+        if(center.Y < bounds.Min.Y + entry.radius()){
+          entry.owner.Position = new Vector2(entry.owner.Position.X, bounds.Min.Y + entry.radius());
+        } else if(center.Y > bounds.Max.Y - entry.radius()){
+          entry.owner.Position = new Vector2(entry.owner.Position.X, bounds.Max.Y - entry.radius());
+        }
+      }
+    }
+
+    public void Collide(){
       for(int i = 0; i < collisionEntries.Count; ++i){
         for(int j = 0; j < collisionEntries.Count; ++j){
           CollisionEntry collidee = collisionEntries[i];

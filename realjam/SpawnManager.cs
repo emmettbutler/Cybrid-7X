@@ -18,7 +18,7 @@ namespace realjam {
     public SpawnManager(Scene scene, Collider collider) {
       this.collider = collider;
       this.scene = scene;
-      limit = 150;
+      limit = 250;
       cells = new List<Cell>();
       pending = new List<Cell>();
       SpawnCell(scene.Camera.CalcBounds().Center);
