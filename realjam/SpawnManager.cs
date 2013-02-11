@@ -11,22 +11,24 @@ namespace realjam {
     public Scene scene {get; set;}
     public Collider collider {get; set;}
     public List<Cell> cells {get; set;}
+    public int limit {get; set;}
     private List<Cell> pending;
-    private int counter;
+    private Random rng;
 
     public SpawnManager(Scene scene, Collider collider) {
       this.collider = collider;
       this.scene = scene;
+      limit = 150;
       cells = new List<Cell>();
       pending = new List<Cell>();
       SpawnCell(scene.Camera.CalcBounds().Center);
+      rng = new Random();
     }
 
     public void SpawnCell(Vector2 pos){
       Cell sprite = new Cell(pos);
 
       collider.add(sprite);
-      sprite.CenterSprite();
       scene.AddChild(sprite);
       pending.Add(sprite);
     }
@@ -37,12 +39,11 @@ namespace realjam {
 
         //do magic & make love babbies
 
-        if (c.getTimeAlive() > c.period && !c.hasReproduced){
+        if (c.getTimeAlive() > c.period && !c.hasReproduced && cells.Count < limit){
           //create new cell & add to pending list
-          SpawnCell(new Vector2 (c.Position.X+50, c.Position.Y-50));
-          SpawnCell(new Vector2 (c.Position.X-50, c.Position.Y-50));
+          SpawnCell(new Vector2 (c.Position.X+rng.Next(-20,20), c.Position.Y+rng.Next(-20,20)));
+          SpawnCell(new Vector2 (c.Position.X+rng.Next(-20,20), c.Position.Y+rng.Next(-20,20)));
           c.hasReproduced = true;
-          counter += 2;
         }
         //Console.WriteLine(counter);
       }

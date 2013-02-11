@@ -63,7 +63,7 @@ namespace realjam {
           Vector2 offset = colliderCenter - collideeCenter;
 
           if(offset.LengthSquared() < minOffset*minOffset){
-            collidee.owner.CollideTo(collider.owner);
+            collidee.owner.CollideFrom(collider.owner);
             collider.owner.CollideTo(collidee.owner);
           }
         }

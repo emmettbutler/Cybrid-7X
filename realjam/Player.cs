@@ -16,15 +16,15 @@ namespace realjam {
     }
 
     public override void CollideTo (GameEntity instance){
-      Console.WriteLine("i'm a player getting collided to");
+      instance.Position += (instance.Position-Position)*.1f;
     }
 
     public override void CollideFrom (GameEntity instance){
-      Console.WriteLine("i'm a player getting collided from");
     }
 
     public override void Tick(float dt){
       base.Tick(dt);
+      Console.WriteLine(ttime);
       Vector2 delta = Vector2.Zero;
 
       if(Input2.GamePad0.Right.Down){

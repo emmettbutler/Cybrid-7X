@@ -21,17 +21,15 @@ namespace realjam {
 
     }
 
-    public override void CollideTo (GameEntity instance){
-      Console.WriteLine("i'm a cell getting collided to");
-    }
+    public override void CollideTo (GameEntity instance){}
 
     public override void CollideFrom (GameEntity instance){
-      Console.WriteLine("i'm a cell getting collided from");
+      instance.Position += (instance.Position-Position)*.1f;
     }
 
     public override void Tick(float dt) {
       base.Tick(dt);
-      Position = new Vector2(anchor.X+20*(float)System.Math.Sin(ttime*10),anchor.Y);
+      //Position = new Vector2(anchor.X+20*(float)System.Math.Sin(ttime*10),anchor.Y);
     }
   }
 }

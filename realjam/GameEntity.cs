@@ -19,6 +19,8 @@ namespace realjam {
       borntime = DateTime.UtcNow;
       Position = pos;
 
+      this.CenterSprite();
+
     }
 
     public float getTimeAlive(){
@@ -38,8 +40,7 @@ namespace realjam {
     }
 
     public virtual float GetRadius(){
-      //TODO - get the actual radius
-      return 10;
+      return (Quad.X.X > Quad.Y.Y ? Quad.Y.Y : Quad.X.X)/2;
     }
 
     public virtual void Tick(float dt) {
