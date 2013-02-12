@@ -45,6 +45,11 @@ namespace realjam {
       collisionEntries.Add(entry);
     }
 
+    public void remove(GameEntity instance){
+      CollisionEntry e = collisionEntries.Find(x => x.owner == instance);
+      collisionEntries.Remove(e);
+    }
+
     public void CollideWalls(Scene scene){
       Bounds2 bounds = scene.Camera.CalcBounds();
       for(int i = 0; i < collisionEntries.Count; ++i){

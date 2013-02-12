@@ -9,18 +9,16 @@ namespace realjam {
 
     public DateTime borntime;
     protected float ttime;
-    protected TextureInfo texture;
 
     public GameEntity(Vector2 pos) {
-      texture = new TextureInfo( new Texture2D("/Application/assets/eyebulb.png",false));
-      TextureInfo = texture;
-      Quad.S = texture.TextureSizef/4;
+      TextureInfo = new TextureInfo( new Texture2D("/Application/assets/eyebulb.png",false));
+      Quad.S = TextureInfo.TextureSizef/4;
 
       borntime = DateTime.UtcNow;
+      ttime = 0;
       Position = pos;
 
       this.CenterSprite();
-
     }
 
     public float getTimeAlive(){

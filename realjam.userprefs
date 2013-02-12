@@ -1,14 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="realjam\Player.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="realjam\GameEntity.cs">
     <Files>
-      <File FileName="realjam\AppMain.cs" Line="29" Column="65" />
-      <File FileName="realjam\Player.cs" Line="24" Column="26" />
-      <File FileName="realjam\GameEntity.cs" Line="43" Column="34" />
-      <File FileName="realjam\Cell.cs" Line="19" Column="7" />
-      <File FileName="realjam\Collider.cs" Line="66" Column="39" />
-      <File FileName="realjam\SpawnManager.cs" Line="21" Column="17" />
+      <File FileName="realjam\AppMain.cs" Line="29" Column="37" />
+      <File FileName="realjam\Player.cs" Line="11" Column="8" />
+      <File FileName="realjam\GameEntity.cs" Line="16" Column="16" />
+      <File FileName="realjam\Collider.cs" Line="49" Column="26" />
+      <File FileName="realjam\SpawnManager.cs" Line="21" Column="22" />
+      <File FileName="realjam\Cell.cs" Line="19" Column="26" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="realjam" expanded="True">
+            <Node name="GameEntity.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

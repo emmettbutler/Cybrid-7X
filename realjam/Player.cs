@@ -11,9 +11,8 @@ namespace realjam {
     public Cell grabbing = null;
 
     public Player(Vector2 pos) : base(pos){
-      texture = new TextureInfo( new Texture2D("/Application/assets/robot.png",false));
-      TextureInfo = texture;
-      Quad.S = texture.TextureSizef/2;
+      TextureInfo = new TextureInfo( new Texture2D("/Application/assets/robot.png",false));
+      Quad.S = TextureInfo.TextureSizef/2;
     }
 
     public override void CollideTo (GameEntity instance){
@@ -33,7 +32,7 @@ namespace realjam {
 
     public override void Tick(float dt){
       base.Tick(dt);
-      Console.WriteLine(ttime);
+      //Console.WriteLine(ttime);
       Vector2 delta = Vector2.Zero;
 
       if(Input2.GamePad0.Right.Down){

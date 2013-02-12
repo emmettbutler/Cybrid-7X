@@ -11,14 +11,21 @@ namespace realjam {
     public Boolean hasReproduced {get; set;}
     public float period {get; set;}
     public Boolean grabbed {get; set;}
+    private int lifespan;
 
     public Cell(Vector2 pos) : base(pos){
-      Quad.S = texture.TextureSizef/4;
+      Quad.S = TextureInfo.TextureSizef/4;
       hasReproduced = false;
       anchor = Position;
+      lifespan = 2;
 
       Random rng = new Random();
-      period = ((float)rng.NextDouble()*2)+3;
+      period = 1;
+      //period = ((float)rng.NextDouble()*2)+3;
+    }
+
+    public int getLifeSpan(){
+      return lifespan;
     }
 
     public override void CollideTo (GameEntity instance){}
@@ -32,7 +39,6 @@ namespace realjam {
 
     public override void Tick(float dt) {
       base.Tick(dt);
-      //Position = new Vector2(anchor.X+20*(float)System.Math.Sin(ttime*10),anchor.Y);
     }
   }
 }
