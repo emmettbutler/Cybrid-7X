@@ -17,7 +17,7 @@ namespace realjam {
     public SpawnManager(Scene scene, Collider collider) {
       this.collider = collider;
       this.scene = scene;
-      limit = 150;
+      limit = 10;
       cells = new List<Cell>();
       SpawnCell(scene.Camera.CalcBounds().Center);
       rng = new Random();
@@ -44,13 +44,25 @@ namespace realjam {
         Cell c = cells[i];
         c.Tick(dt);
         //do magic & make love babbies
-        if (c.getTimeAlive() > c.period && !c.hasReproduced && cells.Count < limit){
-          SpawnCell(new Vector2 (c.Position.X+rng.Next(-20,20), c.Position.Y+rng.Next(-20,20)));
-          SpawnCell(new Vector2 (c.Position.X+rng.Next(-20,20), c.Position.Y+rng.Next(-20,20)));
-          c.hasReproduced = true;
+
+        List<GameEntity> nearby = new List<GameEntity>();
+
+        for (int j = 0; j < cells.Count; j++){
+          Cell d = cells[j];
+          Vector2 displacement = d.Position - c.Position;
+
+          if(displacement.LengthSquared() < c.getSquaredEffectRadius()){
+            nearby.Add(d);
+          }
+        }
+        if (c.shouldSpawn(nearby) && !c.hasReproduced && cells.Count < limit){
+          for(i = 0; i < c.newOffspringCount(nearby); i++){
+            SpawnCell(new Vector2 (c.Position.X+rng.Next(-20,20), c.Position.Y+rng.Next(-20,20)));
+          }
+         // c.hasReproduced = true;
         }
         //Console.WriteLine(counter);
-        if (c.getTimeAlive() > c.getLifeSpan()){
+        if (c.shouldDie(nearby)){
           DestroyCell(c);
         }
       }

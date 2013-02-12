@@ -3,6 +3,7 @@ using Sce.PlayStation.Core;
 using Sce.PlayStation.HighLevel.GameEngine2D;
 using Sce.PlayStation.HighLevel.GameEngine2D.Base;
 using Sce.PlayStation.Core.Graphics;
+using System.Collections.Generic;
 
 namespace realjam {
   public class Cell:GameEntity {
@@ -17,15 +18,39 @@ namespace realjam {
       Quad.S = TextureInfo.TextureSizef/4;
       hasReproduced = false;
       anchor = Position;
-      lifespan = 2;
+      lifespan = 10;
 
       Random rng = new Random();
-      period = 1;
+      period = 8;
       //period = ((float)rng.NextDouble()*2)+3;
     }
 
-    public int getLifeSpan(){
-      return lifespan;
+    public float getSquaredEffectRadius(){
+      return 30*30;
+    }
+
+    public Boolean shouldDie(List<GameEntity> nearby){
+      if(ttime > lifespan){
+        if(nearby.Count > 4){
+          return false;
+        }
+        return true;
+      }
+      return false;
+    }
+
+    public Boolean shouldSpawn(List<GameEntity> nearby){
+      if(ttime % period == 0){
+        if(nearby.Count > 4){
+          return true;
+        }
+        return false;
+      }
+      return true;
+    }
+
+    public int newOffspringCount(List<GameEntity> nearby){
+      return 2;
     }
 
     public override void CollideTo (GameEntity instance){}
