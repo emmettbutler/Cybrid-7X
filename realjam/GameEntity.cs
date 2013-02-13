@@ -10,6 +10,13 @@ namespace realjam {
     public DateTime borntime;
     protected float ttime;
 
+    public enum CellType{
+      Rose,
+      Eye,
+    }
+
+    public CellType type {get; set;}
+
     public GameEntity(Vector2 pos) {
       TextureInfo = new TextureInfo( new Texture2D("/Application/assets/eyebulb.png",false));
       Quad.S = TextureInfo.TextureSizef/4;

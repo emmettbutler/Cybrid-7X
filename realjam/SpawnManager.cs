@@ -59,7 +59,7 @@ namespace realjam {
           for(i = 0; i < c.newOffspringCount(nearby); i++){
             SpawnCell(new Vector2 (c.Position.X+rng.Next(-20,20), c.Position.Y+rng.Next(-20,20)));
           }
-         // c.hasReproduced = true;
+          c.hasReproduced = true;
         }
         //Console.WriteLine(counter);
         if (c.shouldDie(nearby)){
