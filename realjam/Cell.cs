@@ -20,6 +20,10 @@ namespace realjam {
       hasReproduced = false;
       anchor = Position;
 
+      sprite = Support.TiledSpriteFromFile("/Application/assets/roseA1.png", 1, 1);
+      sprite.Position = Position;
+      sprite.CenterSprite();
+
       Random rng = new Random();
       readyToSpawn = false;
 
@@ -60,9 +64,10 @@ namespace realjam {
     public override void CollideTo (GameEntity instance){}
 
     public override void CollideFrom (GameEntity instance){
+      Console.WriteLine("cell colliding from");
       if(instance is Player && grabbed){
       } else if(instance is Cell){
-        instance.Position += (instance.Position-Position)*.1f;
+        instance.sprite.Position += (instance.sprite.Position-sprite.Position)*.1f;
       }
     }
 

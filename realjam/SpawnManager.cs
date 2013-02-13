@@ -21,8 +21,6 @@ namespace realjam {
       cells = new List<Cell>();
       SpawnCell(new Vector2(100, 100));
       SpawnCell(new Vector2(300, 100));
-      //SpawnCell(new Vector2(600, 120));
-      //SpawnCell(new Vector2(620, 120));
       SpawnCell(new Vector2(400, 320));
       SpawnCell(new Vector2(430, 320));
       rng = new Random();
@@ -30,7 +28,7 @@ namespace realjam {
 
     public void SpawnCell(Vector2 pos){
       Cell sprite = new Cell(pos);
-      scene.AddChild(sprite);
+      scene.AddChild(sprite.sprite);
 
       collider.add(sprite);
       cells.Add(sprite);
@@ -38,7 +36,7 @@ namespace realjam {
 
     public void DestroyCell(Cell c){
       collider.remove(c);
-      scene.RemoveChild(c,true);
+      scene.RemoveChild(c.sprite,true);
       cells.Remove(c);
       c.TextureInfo.Dispose();
     }

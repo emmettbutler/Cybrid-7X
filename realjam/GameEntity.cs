@@ -12,9 +12,6 @@ namespace realjam {
     public SpriteTile sprite {get; set;}
 
     public GameEntity(Vector2 pos) {
-      TextureInfo = new TextureInfo( new Texture2D("/Application/assets/roseA1.png",false));
-      Quad.S = TextureInfo.TextureSizef;
-
       borntime = DateTime.UtcNow;
       ttime = 0;
       Position = pos;
