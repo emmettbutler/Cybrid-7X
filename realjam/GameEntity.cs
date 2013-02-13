@@ -9,10 +9,11 @@ namespace realjam {
 
     public DateTime borntime;
     protected float ttime;
+    public SpriteTile sprite {get; set;}
 
     public GameEntity(Vector2 pos) {
-      TextureInfo = new TextureInfo( new Texture2D("/Application/assets/eyebulb.png",false));
-      Quad.S = TextureInfo.TextureSizef/4;
+      TextureInfo = new TextureInfo( new Texture2D("/Application/assets/roseA1.png",false));
+      Quad.S = TextureInfo.TextureSizef;
 
       borntime = DateTime.UtcNow;
       ttime = 0;
@@ -34,11 +35,19 @@ namespace realjam {
     }
 
     public virtual Vector2 GetCenter(){
-      return Position;
+      if(sprite != null){
+        return sprite.Position;
+      } else {
+        return Position;
+      }
     }
 
     public virtual float GetRadius(){
-      return (Quad.X.X > Quad.Y.Y ? Quad.Y.Y : Quad.X.X)/2;
+      if(sprite != null){
+        return (sprite.Quad.X.X > sprite.Quad.Y.Y ? sprite.Quad.Y.Y : sprite.Quad.X.X)/2;
+      } else {
+        return (Quad.X.X > Quad.Y.Y ? Quad.Y.Y : Quad.X.X)/2;
+      }
     }
 
     public virtual void Tick(float dt) {

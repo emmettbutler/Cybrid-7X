@@ -17,7 +17,6 @@ namespace realjam {
     private float lastSpawnTime;
 
     public Cell(Vector2 pos) : base(pos){
-      Quad.S = TextureInfo.TextureSizef/4;
       hasReproduced = false;
       anchor = Position;
 

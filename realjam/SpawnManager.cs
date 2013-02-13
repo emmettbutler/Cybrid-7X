@@ -23,8 +23,8 @@ namespace realjam {
       SpawnCell(new Vector2(300, 100));
       //SpawnCell(new Vector2(600, 120));
       //SpawnCell(new Vector2(620, 120));
-      SpawnCell(new Vector2(400, 520));
-      SpawnCell(new Vector2(430, 520));
+      SpawnCell(new Vector2(400, 320));
+      SpawnCell(new Vector2(430, 320));
       rng = new Random();
     }
 

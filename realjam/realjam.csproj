@@ -43,6 +43,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="GameEntity.cs" />
     <Compile Include="Collider.cs" />
+    <Compile Include="Support.cs" />
   </ItemGroup>
   <ItemGroup>
     <ShaderProgram Include="shaders\Simple.fcg" />
@@ -58,6 +59,8 @@
   <ItemGroup>
     <Content Include="assets\eyebulb.png" />
     <Content Include="assets\robot.png" />
+    <Content Include="assets\robot_sheet1.png" />
+    <Content Include="assets\roseA1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />

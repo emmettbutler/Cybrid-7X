@@ -67,6 +67,20 @@ namespace realjam {
         } else if(center.Y > bounds.Max.Y - entry.radius()){
           entry.owner.Position = new Vector2(entry.owner.Position.X, bounds.Max.Y - entry.radius());
         }
+
+        if(entry.owner.sprite != null){
+          if(center.X < bounds.Min.X + entry.radius()){
+            entry.owner.sprite.Position = new Vector2(bounds.Min.X + entry.radius(), entry.owner.sprite.Position.Y);
+          } else if(center.X > bounds.Max.X - entry.radius()){
+            entry.owner.sprite.Position = new Vector2(bounds.Max.X - entry.radius(), entry.owner.sprite.Position.Y);
+          }
+
+          if(center.Y < bounds.Min.Y + entry.radius()){
+            entry.owner.sprite.Position = new Vector2(entry.owner.sprite.Position.X, bounds.Min.Y + entry.radius());
+          } else if(center.Y > bounds.Max.Y - entry.radius()){
+            entry.owner.sprite.Position = new Vector2(entry.owner.sprite.Position.X, bounds.Max.Y - entry.radius());
+          }
+        }
       }
     }
 

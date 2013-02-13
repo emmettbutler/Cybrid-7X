@@ -15,7 +15,7 @@ namespace realjam
 		public static void Main (string[] args)
 		{
       Director.Initialize();
-      Director.Instance.GL.Context.SetClearColor(Colors.Cyan);
+      Director.Instance.GL.Context.SetClearColor(new Vector4(36.0f/255.0f, 234.0f/255.0f, 143.0f/255.0f, 1.0f));
 
       var scene = new Scene();
       scene.Camera.SetViewFromViewport();
@@ -23,7 +23,7 @@ namespace realjam
       var collider = new Collider();
 
       var player = new Player(new Vector2(40,10));
-      scene.AddChild(player);
+      scene.AddChild(player.sprite);
       collider.add(player);
 
       SpawnManager spawnmngr = new SpawnManager(scene,collider);

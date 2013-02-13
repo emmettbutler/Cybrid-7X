@@ -9,8 +9,15 @@ namespace realjam {
 
     public const int runSpeed = 7;
     public Cell grabbing = null;
+    public Support.AnimationAction WalkAnimation { get; set; }
 
     public Player(Vector2 pos) : base(pos){
+      sprite = Support.TiledSpriteFromFile("/Application/assets/robot_sheet1.png", 9, 1);
+      sprite.CenterSprite();
+
+      WalkAnimation = new Support.AnimationAction(sprite, 1, 9, 1.0f, looping: true);
+      sprite.RunAction(WalkAnimation);
+
       TextureInfo = new TextureInfo( new Texture2D("/Application/assets/robot.png",false));
       Quad.S = TextureInfo.TextureSizef/2;
     }
@@ -47,6 +54,7 @@ namespace realjam {
         delta += new Vector2(0,-runSpeed);
       }
       Position += delta;
+      sprite.Position += delta;
 
       if(!Input2.GamePad0.Circle.Down && grabbing != null){
         grabbing.grabbed = false;
