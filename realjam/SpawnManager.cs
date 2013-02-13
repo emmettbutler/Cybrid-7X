@@ -17,9 +17,14 @@ namespace realjam {
     public SpawnManager(Scene scene, Collider collider) {
       this.collider = collider;
       this.scene = scene;
-      limit = 10;
+      limit = 100;
       cells = new List<Cell>();
-      SpawnCell(scene.Camera.CalcBounds().Center);
+      SpawnCell(new Vector2(100, 100));
+      SpawnCell(new Vector2(300, 100));
+      //SpawnCell(new Vector2(600, 120));
+      //SpawnCell(new Vector2(620, 120));
+      SpawnCell(new Vector2(400, 520));
+      SpawnCell(new Vector2(430, 520));
       rng = new Random();
     }
 
@@ -39,7 +44,7 @@ namespace realjam {
     }
 
     public void FrameUpdate(float dt){
-      Console.WriteLine("cells count: " + cells.Count);
+      //Console.WriteLine("cells count: " + cells.Count);
       for (int i = 0; i < cells.Count; i++){
         Cell c = cells[i];
         c.Tick(dt);
@@ -49,17 +54,22 @@ namespace realjam {
 
         for (int j = 0; j < cells.Count; j++){
           Cell d = cells[j];
+          if(d == c){
+            continue;
+          }
           Vector2 displacement = d.Position - c.Position;
 
           if(displacement.LengthSquared() < c.getSquaredEffectRadius()){
             nearby.Add(d);
           }
+          //Console.WriteLine("nearby count: " + nearby.Count);
         }
-        if (c.shouldSpawn(nearby) && !c.hasReproduced && cells.Count < limit){
+        if (c.shouldSpawn(nearby) && cells.Count < limit){
+          Console.WriteLine(i + ": " + c.newOffspringCount(nearby));
           for(i = 0; i < c.newOffspringCount(nearby); i++){
             SpawnCell(new Vector2 (c.Position.X+rng.Next(-20,20), c.Position.Y+rng.Next(-20,20)));
           }
-         // c.hasReproduced = true;
+          c.hasReproduced = true;
         }
         //Console.WriteLine(counter);
         if (c.shouldDie(nearby)){

@@ -7,7 +7,7 @@ using Sce.PlayStation.Core.Graphics;
 namespace realjam {
   public class Player:GameEntity {
 
-    public const int runSpeed = 5;
+    public const int runSpeed = 7;
     public Cell grabbing = null;
 
     public Player(Vector2 pos) : base(pos){

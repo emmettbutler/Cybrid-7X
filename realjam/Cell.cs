@@ -12,21 +12,26 @@ namespace realjam {
     public Boolean hasReproduced {get; set;}
     public float period {get; set;}
     public Boolean grabbed {get; set;}
-    private int lifespan;
+    private int lifespan, refreshPeriod;
+    private Boolean readyToSpawn;
+    private float lastSpawnTime;
 
     public Cell(Vector2 pos) : base(pos){
       Quad.S = TextureInfo.TextureSizef/4;
       hasReproduced = false;
       anchor = Position;
-      lifespan = 10;
 
       Random rng = new Random();
-      period = 8;
-      //period = ((float)rng.NextDouble()*2)+3;
+      readyToSpawn = false;
+
+      period = 6;
+      lifespan = rng.Next(6, 9);
+      refreshPeriod = rng.Next(5, 10);
+
     }
 
     public float getSquaredEffectRadius(){
-      return 30*30;
+      return 60*60;
     }
 
     public Boolean shouldDie(List<GameEntity> nearby){
@@ -34,23 +39,23 @@ namespace realjam {
         if(nearby.Count > 4){
           return false;
         }
-        return true;
+        //return true;
       }
       return false;
     }
 
     public Boolean shouldSpawn(List<GameEntity> nearby){
-      if(ttime % period == 0){
-        if(nearby.Count > 4){
+      if((int)ttime % period == 0 && ttime > period){
+        if(nearby.Count >= 1 && readyToSpawn && !hasReproduced){
+          lastSpawnTime = ttime;
           return true;
         }
-        return false;
       }
-      return true;
+      return false;
     }
 
     public int newOffspringCount(List<GameEntity> nearby){
-      return 2;
+      return 1;
     }
 
     public override void CollideTo (GameEntity instance){}
@@ -64,6 +69,13 @@ namespace realjam {
 
     public override void Tick(float dt) {
       base.Tick(dt);
+      if(ttime > period && !readyToSpawn){
+        readyToSpawn = true;
+      }
+      if(System.Math.Abs((ttime - lastSpawnTime) - refreshPeriod) < .001 && hasReproduced){
+        Console.WriteLine(ttime);
+        hasReproduced = false;
+      }
     }
   }
 }
