@@ -64,7 +64,6 @@ namespace realjam {
     public override void CollideTo (GameEntity instance){}
 
     public override void CollideFrom (GameEntity instance){
-      Console.WriteLine("cell colliding from");
       if(instance is Player && grabbed){
       } else if(instance is Cell){
         instance.sprite.Position += (instance.sprite.Position-sprite.Position)*.1f;

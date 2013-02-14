@@ -59,8 +59,8 @@
   <ItemGroup>
     <Content Include="assets\eyebulb.png" />
     <Content Include="assets\robot.png" />
-    <Content Include="assets\robot_sheet1.png" />
     <Content Include="assets\roseA1.png" />
+    <Content Include="assets\robot_sheet2.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />
