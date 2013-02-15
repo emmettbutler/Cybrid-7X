@@ -15,7 +15,11 @@ namespace realjam {
     public Support.AnimationAction WalkRightAnimation { get; set; }
 
     private enum WalkDirs{
-      WLK_RIGHT, WLK_LEFT, WLK_UP, WLK_DOWN, WLK_NONE
+      WLK_RIGHT = 0x0001,
+      WLK_LEFT = 0x0002,
+      WLK_UP = 0x0004,
+      WLK_DOWN = 0x0008,
+      WLK_NONE = 0x0000
     };
 
     private WalkDirs walkDirection;
@@ -60,7 +64,7 @@ namespace realjam {
           sprite.StopAllActions();
           sprite.RunAction(WalkRightAnimation);
         }
-        walkDirection = WalkDirs.WLK_RIGHT;
+        walkDirection |= WalkDirs.WLK_RIGHT;
         delta = new Vector2(runSpeed,0);
       } else if(Input2.GamePad0.Left.Down){
         walking = true;
@@ -68,7 +72,7 @@ namespace realjam {
           sprite.StopAllActions();
           sprite.RunAction(WalkLeftAnimation);
         }
-        walkDirection = WalkDirs.WLK_LEFT;
+        walkDirection |= WalkDirs.WLK_LEFT;
         delta = new Vector2(-runSpeed,0);
       }
 
@@ -78,7 +82,7 @@ namespace realjam {
           sprite.StopAllActions();
           sprite.RunAction(WalkBackAnimation);
         }
-        walkDirection = WalkDirs.WLK_UP;
+        walkDirection |= WalkDirs.WLK_UP;
         delta += new Vector2(0,runSpeed);
       } else if(Input2.GamePad0.Down.Down){
         walking = true;
@@ -86,7 +90,7 @@ namespace realjam {
           sprite.StopAllActions();
           sprite.RunAction(WalkFrontAnimation);
         }
-        walkDirection = WalkDirs.WLK_DOWN;
+        walkDirection |= WalkDirs.WLK_DOWN;
         delta += new Vector2(0,-runSpeed);
       }
       sprite.Position += delta;
