@@ -19,15 +19,15 @@ namespace realjam {
       this.scene = scene;
       limit = 100;
       cells = new List<Cell>();
-      SpawnCell(new Vector2(100, 100), 0);
-      SpawnCell(new Vector2(300, 100), 0);
-      SpawnCell(new Vector2(400, 320), 0);
-      SpawnCell(new Vector2(430, 320), 0);
+      SpawnCell(new Vector2(100, 100), 10);
+      SpawnCell(new Vector2(300, 100), 10);
+      SpawnCell(new Vector2(400, 320), 10);
+      SpawnCell(new Vector2(430, 320), 1);
       rng = new Random();
     }
 
     public void SpawnCell(Vector2 pos, int type){
-      Cell sprite = new Cell(pos);
+      Cell sprite = new Cell(pos, type);
       scene.AddChild(sprite.sprite);
 
       collider.add(sprite);
@@ -67,6 +67,7 @@ namespace realjam {
           int typeCounter = 0;
           for(i = 0; i < c.newOffspringCount(nearby); i++){
             SpawnCell(new Vector2 (c.Position.X+rng.Next(-20,20), c.Position.Y+rng.Next(-20,20)), offspringTypes[typeCounter]);
+            Console.WriteLine(offspringTypes[typeCounter]);
             if(typeCounter < offspringTypes.Count - 1){
               typeCounter++;
             } else{

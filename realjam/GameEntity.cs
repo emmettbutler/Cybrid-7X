@@ -7,15 +7,9 @@ using Sce.PlayStation.Core.Graphics;
 namespace realjam {
   public class GameEntity:SpriteUV {
 
-    public enum CellType{
-      roseA1,
-      shroomA1,
-    }
-
     public DateTime borntime;
     protected float ttime;
     public SpriteTile sprite {get; set;}
-    public CellType type {get; set;}
 
     public GameEntity(Vector2 pos) {
       borntime = DateTime.UtcNow;

@@ -18,7 +18,7 @@ namespace realjam {
     private string spritePath;
     public int type {get; set;}
 
-    public Cell(Vector2 pos) : base(pos){
+    public Cell(Vector2 pos, int type) : base(pos){
 
       Random rng = new Random();
       readyToSpawn = false;
@@ -29,9 +29,9 @@ namespace realjam {
       hasReproduced = false;
       anchor = Position;
 
-      type = 10;
+      this.type = type;
       spritePath = "/Application/assets/cell_";
-      spritePath += type.ToString("D10") + ".png";
+      spritePath += this.type.ToString("D10") + ".png";
 
       sprite = Support.TiledSpriteFromFile(spritePath, 1, 1);
       sprite.Position = Position;
@@ -64,7 +64,14 @@ namespace realjam {
 
     public List<int> OffspringTypes(List<GameEntity> nearby){
       List<int> types = new List<int>();
-      types.Add(10);
+      int result = 0;
+
+      for(int i = 0; i < nearby.Count; i++){
+        Cell c = (Cell)nearby[i];
+        result += c.type;
+      }
+
+      types.Add(result);
       return types;
     }
 
