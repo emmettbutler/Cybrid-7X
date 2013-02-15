@@ -15,14 +15,10 @@ namespace realjam {
     private int lifespan, refreshPeriod;
     private Boolean readyToSpawn;
     private float lastSpawnTime;
+    private int picktype;
+    private string spritePath;
 
     public Cell(Vector2 pos) : base(pos){
-      hasReproduced = false;
-      anchor = Position;
-
-      sprite = Support.TiledSpriteFromFile("/Application/assets/roseA1.png", 1, 1);
-      sprite.Position = Position;
-      sprite.CenterSprite();
 
       Random rng = new Random();
       readyToSpawn = false;
@@ -30,7 +26,25 @@ namespace realjam {
       period = 6;
       lifespan = rng.Next(6, 9);
       refreshPeriod = rng.Next(5, 10);
+      picktype = rng.Next(1,3);
 
+      switch(picktype){
+        case 1:
+          type = CellType.roseA1;
+          spritePath = "/Application/assets/roseA1.png";
+          break;
+        case 2:
+          type = CellType.shroomA1;
+          spritePath = "/Application/assets/shroomA1.png";
+          break;
+      }
+
+      hasReproduced = false;
+      anchor = Position;
+
+      sprite = Support.TiledSpriteFromFile(spritePath, 1, 1);
+      sprite.Position = Position;
+      sprite.CenterSprite();
     }
 
     public float getSquaredEffectRadius(){

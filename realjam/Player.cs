@@ -89,7 +89,6 @@ namespace realjam {
         walkDirection = WalkDirs.WLK_DOWN;
         delta += new Vector2(0,-runSpeed);
       }
-      Position += delta;
       sprite.Position += delta;
 
       if(!walking){
