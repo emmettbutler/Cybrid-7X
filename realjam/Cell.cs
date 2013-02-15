@@ -15,32 +15,23 @@ namespace realjam {
     private int lifespan, refreshPeriod;
     private Boolean readyToSpawn;
     private float lastSpawnTime;
-    private int picktype;
     private string spritePath;
+    public int type {get; set;}
 
     public Cell(Vector2 pos) : base(pos){
 
       Random rng = new Random();
       readyToSpawn = false;
-
       period = 6;
       lifespan = rng.Next(6, 9);
       refreshPeriod = rng.Next(5, 10);
-      picktype = rng.Next(1,3);
-
-      switch(picktype){
-        case 1:
-          type = CellType.roseA1;
-          spritePath = "/Application/assets/roseA1.png";
-          break;
-        case 2:
-          type = CellType.shroomA1;
-          spritePath = "/Application/assets/shroomA1.png";
-          break;
-      }
 
       hasReproduced = false;
       anchor = Position;
+
+      type = 10;
+      spritePath = "/Application/assets/cell_";
+      spritePath += type.ToString("D10") + ".png";
 
       sprite = Support.TiledSpriteFromFile(spritePath, 1, 1);
       sprite.Position = Position;
@@ -69,6 +60,12 @@ namespace realjam {
         }
       }
       return false;
+    }
+
+    public List<int> OffspringTypes(List<GameEntity> nearby){
+      List<int> types = new List<int>();
+      types.Add(10);
+      return types;
     }
 
     public int newOffspringCount(List<GameEntity> nearby){

@@ -19,14 +19,14 @@ namespace realjam {
       this.scene = scene;
       limit = 100;
       cells = new List<Cell>();
-      SpawnCell(new Vector2(100, 100));
-      SpawnCell(new Vector2(300, 100));
-      SpawnCell(new Vector2(400, 320));
-      SpawnCell(new Vector2(430, 320));
+      SpawnCell(new Vector2(100, 100), 0);
+      SpawnCell(new Vector2(300, 100), 0);
+      SpawnCell(new Vector2(400, 320), 0);
+      SpawnCell(new Vector2(430, 320), 0);
       rng = new Random();
     }
 
-    public void SpawnCell(Vector2 pos){
+    public void SpawnCell(Vector2 pos, int type){
       Cell sprite = new Cell(pos);
       scene.AddChild(sprite.sprite);
 
@@ -63,9 +63,15 @@ namespace realjam {
           //Console.WriteLine("nearby count: " + nearby.Count);
         }
         if (c.shouldSpawn(nearby) && cells.Count < limit){
-          Console.WriteLine(i + ": " + c.newOffspringCount(nearby));
+          List<int> offspringTypes = c.OffspringTypes(nearby);
+          int typeCounter = 0;
           for(i = 0; i < c.newOffspringCount(nearby); i++){
-            SpawnCell(new Vector2 (c.Position.X+rng.Next(-20,20), c.Position.Y+rng.Next(-20,20)));
+            SpawnCell(new Vector2 (c.Position.X+rng.Next(-20,20), c.Position.Y+rng.Next(-20,20)), offspringTypes[typeCounter]);
+            if(typeCounter < offspringTypes.Count - 1){
+              typeCounter++;
+            } else{
+              typeCounter = 0;
+            }
           }
           c.hasReproduced = true;
         }
