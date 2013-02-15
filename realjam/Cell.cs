@@ -71,8 +71,36 @@ namespace realjam {
         result += c.type;
       }
 
+      result = clampTypeLevels(result);
+      if(result == 0){
+        result = 1;
+      }
       types.Add(result);
       return types;
+    }
+
+    public static int clampTypeLevels(int type){
+      int[] limits = {1,1,0,0,0,0,0,0,0,0};
+      int[] levels = new int[10];
+      int input = type;
+      int divisor = 1000000000;
+      int result = 0;
+      for(int i = 9; i >= 0; i--){
+        levels[i] = input/divisor;
+        input %= divisor;
+        divisor /= 10;
+      }
+
+      divisor = 1;
+
+      for(int i = 0; i < 10; i++){
+        if(levels[i] > limits[i]){
+          levels[i] = limits[i];
+        }
+        result += divisor*levels[i];
+        divisor *= 10;
+      }
+      return result;
     }
 
     public int newOffspringCount(List<GameEntity> nearby){

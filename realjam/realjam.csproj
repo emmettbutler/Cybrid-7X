@@ -62,6 +62,7 @@
     <Content Include="assets\robot_sheet2.png" />
     <Content Include="assets\cell_0000000001.png" />
     <Content Include="assets\cell_0000000010.png" />
+    <Content Include="assets\cell_0000000011.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />
