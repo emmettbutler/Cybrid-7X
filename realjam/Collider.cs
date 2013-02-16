@@ -86,6 +86,10 @@ namespace realjam {
 
     public void Collide(){
       for(int i = 0; i < collisionEntries.Count; ++i){
+        float span = 600;
+        float scaled = (span - collisionEntries[i].owner.sprite.Position.Y) / span;
+        collisionEntries[i].owner.sprite.VertexZ = scaled;
+        
         for(int j = 0; j < collisionEntries.Count; ++j){
           CollisionEntry collidee = collisionEntries[i];
           CollisionEntry collider = collisionEntries[j];

@@ -17,6 +17,10 @@ namespace realjam
       Director.Initialize();
       Director.Instance.GL.Context.SetClearColor(new Vector4(36.0f/255.0f, 234.0f/255.0f, 143.0f/255.0f, 1.0f));
 
+      Director.Instance.GL.Context.Enable(EnableMode.DepthTest);
+      Director.Instance.GL.Context.Enable(EnableMode.Blend);
+      Director.Instance.GL.Context.SetBlendFuncAlpha(BlendFuncMode.ReverseSubtract, BlendFuncFactor.OneMinusSrcAlpha, BlendFuncFactor.OneMinusSrcAlpha);
+
       var scene = new Scene();
       scene.Camera.SetViewFromViewport();
 
