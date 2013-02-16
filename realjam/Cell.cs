@@ -27,14 +27,14 @@ namespace realjam {
       refreshPeriod = rng.Next(5, 10);
 
       hasReproduced = false;
-      anchor = Position;
+      anchor = sprite.Position;
 
       this.type = type;
       spritePath = "/Application/assets/cell_";
       spritePath += this.type.ToString("D10") + ".png";
 
       sprite = Support.TiledSpriteFromFile(spritePath, 1, 1);
-      sprite.Position = Position;
+      sprite.Position = pos;
       sprite.CenterSprite();
     }
 
@@ -98,10 +98,10 @@ namespace realjam {
           levels[i] = limits[i];
         }
         result += divisor*levels[i];
-        divisor *= 5;
+        divisor *= 10;
       }
-      return result;
       Console.WriteLine(result);
+      return result;
     }
 
     public int newOffspringCount(List<GameEntity> nearby){

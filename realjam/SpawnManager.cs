@@ -46,8 +46,6 @@ namespace realjam {
       for (int i = 0; i < cells.Count; i++){
         Cell c = cells[i];
         c.Tick(dt);
-        //do magic & make love babbies
-
         List<GameEntity> nearby = new List<GameEntity>();
 
         for (int j = 0; j < cells.Count; j++){
@@ -55,19 +53,19 @@ namespace realjam {
           if(d == c){
             continue;
           }
-          Vector2 displacement = d.Position - c.Position;
+          Vector2 displacement = d.sprite.Position - c.sprite.Position;
 
           if(displacement.LengthSquared() < c.getSquaredEffectRadius()){
             nearby.Add(d);
           }
-          //Console.WriteLine("nearby count: " + nearby.Count);
         }
+
         if (c.shouldSpawn(nearby) && cells.Count < limit){
           List<int> offspringTypes = c.OffspringTypes(nearby);
           int typeCounter = 0;
           for(i = 0; i < c.newOffspringCount(nearby); i++){
-            SpawnCell(new Vector2 (c.Position.X+rng.Next(-20,20), c.Position.Y+rng.Next(-20,20)), offspringTypes[typeCounter]);
             Console.WriteLine(offspringTypes[typeCounter]);
+            SpawnCell(new Vector2 (c.sprite.Position.X+rng.Next(-20,20), c.sprite.Position.Y+rng.Next(-20,20)), offspringTypes[typeCounter]);
             if(typeCounter < offspringTypes.Count - 1){
               typeCounter++;
             } else{
@@ -76,7 +74,7 @@ namespace realjam {
           }
           c.hasReproduced = true;
         }
-        //Console.WriteLine(counter);
+
         if (c.shouldDie(nearby)){
           DestroyCell(c);
         }

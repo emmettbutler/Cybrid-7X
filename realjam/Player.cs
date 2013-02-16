@@ -7,7 +7,7 @@ using Sce.PlayStation.Core.Graphics;
 namespace realjam {
   public class Player:GameEntity {
 
-    public const int runSpeed = 3;
+    public const int runSpeed = 15;
     public Cell grabbing = null;
     public Support.AnimationAction WalkFrontAnimation { get; set; }
     public Support.AnimationAction WalkBackAnimation { get; set; }

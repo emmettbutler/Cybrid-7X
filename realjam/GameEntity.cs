@@ -14,7 +14,8 @@ namespace realjam {
     public GameEntity(Vector2 pos) {
       borntime = DateTime.UtcNow;
       ttime = 0;
-      Position = pos;
+      sprite = Support.TiledSpriteFromFile("/Application/assets/robot_sheet2.png", 9, 4);
+      sprite.Position = pos;
 
       this.CenterSprite();
     }
