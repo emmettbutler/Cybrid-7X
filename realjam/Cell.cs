@@ -98,9 +98,10 @@ namespace realjam {
           levels[i] = limits[i];
         }
         result += divisor*levels[i];
-        divisor *= 10;
+        divisor *= 5;
       }
       return result;
+      Console.WriteLine(result);
     }
 
     public int newOffspringCount(List<GameEntity> nearby){
@@ -122,7 +123,6 @@ namespace realjam {
         readyToSpawn = true;
       }
       if(System.Math.Abs((ttime - lastSpawnTime) - refreshPeriod) < .001 && hasReproduced){
-        Console.WriteLine(ttime);
         hasReproduced = false;
       }
     }
