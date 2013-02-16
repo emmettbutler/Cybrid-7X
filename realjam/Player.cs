@@ -45,7 +45,24 @@ namespace realjam {
         c.grabbed = true;
         grabbing = c;
       } else {
-        instance.sprite.Position += (instance.sprite.Position-sprite.Position)*.2f;
+        Cell c = (Cell)instance;
+        //instance.sprite.Position += (instance.sprite.Position-sprite.Position)*.2f;
+        Vector2 cellCenter = c.GetCenter();
+        Vector2 playerCenter = this.GetCenter();
+        Vector2 displacement = cellCenter - playerCenter;
+        if(displacement.X > displacement.Y){
+          if(playerCenter.X < cellCenter.X){
+            sprite.Position = new Vector2(c.sprite.Position.X - (c.GetRadius() + this.GetRadius()),sprite.Position.Y);
+          } else if(playerCenter.X > cellCenter.X){
+            sprite.Position = new Vector2(c.sprite.Position.X + (c.GetRadius() + this.GetRadius()),sprite.Position.Y);
+          }
+        }else{
+          if(playerCenter.Y < cellCenter.Y){
+            sprite.Position = new Vector2(sprite.Position.X,c.sprite.Position.Y - (c.GetRadius() + this.GetRadius()));
+          } else if(playerCenter.Y > cellCenter.Y){
+            sprite.Position = new Vector2(sprite.Position.X,c.sprite.Position.Y + (c.GetRadius() + this.GetRadius()));
+          }
+        }
       }
     }
 
