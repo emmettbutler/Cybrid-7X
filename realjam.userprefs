@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="realjam\Player.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="realjam\SpawnManager.cs">
     <Files>
-      <File FileName="realjam\Player.cs" Line="89" Column="12" />
+      <File FileName="realjam\Player.cs" Line="95" Column="8" />
       <File FileName="realjam\GameEntity.cs" Line="14" Column="37" />
-      <File FileName="realjam\Cell.cs" Line="66" Column="60" />
-      <File FileName="realjam\SpawnManager.cs" Line="46" Column="26" />
+      <File FileName="realjam\Cell.cs" Line="60" Column="9" />
+      <File FileName="realjam\SpawnManager.cs" Line="59" Column="6" />
       <File FileName="realjam\AppMain.cs" Line="42" Column="9" />
       <File FileName="realjam\Collider.cs" Line="79" Column="74" />
       <File FileName="realjam\Support.cs" Line="347" Column="4" />
@@ -14,8 +14,7 @@
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="realjam" expanded="True">
-            <Node name="assets" expanded="True" />
-            <Node name="Player.cs" selected="True" />
+            <Node name="SpawnManager.cs" selected="True" />
           </Node>
         </State>
       </Pad>

@@ -1,0 +1,11 @@
+Naming convention for plant sprites
+
+10-digit decimal number
+digit positions correspond to types of plants
+magnitudes correspond to "level" of hybrid
+
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+  n   n   n   n   n   n   n   n   F   R
+
+F = fungus
+R = rose

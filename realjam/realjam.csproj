@@ -63,8 +63,17 @@
     <Content Include="assets\cell_0000000001.png" />
     <Content Include="assets\cell_0000000010.png" />
     <Content Include="assets\cell_0000000011.png" />
+    <Content Include="assets\cell_0000000020.png" />
+    <Content Include="assets\cell_0000000030.png" />
+    <Content Include="assets\cell_0000000002.png" />
+    <Content Include="assets\cell_0000000003.png" />
+    <Content Include="assets\cell_0000000004.png" />
+    <Content Include="assets\cell_0000000005.png" />
+    <Content Include="assets\cell_0000000006.png" />
+    <Content Include="assets\cell_0000000007.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />
+    <None Include="naming_convention.txt" />
   </ItemGroup>
 </Project>
