@@ -7,7 +7,7 @@ using Sce.PlayStation.Core.Graphics;
 namespace realjam {
   public class Player:GameEntity {
 
-    public const int runSpeed = 15;
+    public const int runSpeed = 3;
     public Cell grabbing = null;
     public Support.AnimationAction WalkFrontAnimation { get; set; }
     public Support.AnimationAction WalkBackAnimation { get; set; }
@@ -50,17 +50,17 @@ namespace realjam {
         Vector2 cellCenter = c.GetCenter();
         Vector2 playerCenter = this.GetCenter();
         Vector2 displacement = cellCenter - playerCenter;
-        if(displacement.X > displacement.Y){
+        if(System.Math.Abs(displacement.X) > System.Math.Abs(displacement.Y)){
           if(playerCenter.X < cellCenter.X){
-            sprite.Position = new Vector2(c.sprite.Position.X - (c.GetRadius() + this.GetRadius()),sprite.Position.Y);
+            sprite.Position = new Vector2(sprite.Position.X - runSpeed,sprite.Position.Y);
           } else if(playerCenter.X > cellCenter.X){
-            sprite.Position = new Vector2(c.sprite.Position.X + (c.GetRadius() + this.GetRadius()),sprite.Position.Y);
+            sprite.Position = new Vector2(sprite.Position.X + runSpeed,sprite.Position.Y);
           }
-        }else{
+        } else {
           if(playerCenter.Y < cellCenter.Y){
-            sprite.Position = new Vector2(sprite.Position.X,c.sprite.Position.Y - (c.GetRadius() + this.GetRadius()));
+            sprite.Position = new Vector2(sprite.Position.X,sprite.Position.Y - runSpeed);
           } else if(playerCenter.Y > cellCenter.Y){
-            sprite.Position = new Vector2(sprite.Position.X,c.sprite.Position.Y + (c.GetRadius() + this.GetRadius()));
+            sprite.Position = new Vector2(sprite.Position.X,sprite.Position.Y + runSpeed);
           }
         }
       }
@@ -71,7 +71,7 @@ namespace realjam {
 
     public override void Tick(float dt){
       base.Tick(dt);
-      //Console.WriteLine(ttime);
+      Console.WriteLine(sprite.Shader);
       walking = false;
       Vector2 delta = Vector2.Zero;
 
@@ -110,7 +110,7 @@ namespace realjam {
         walkDirection |= WalkDirs.WLK_DOWN;
         delta += new Vector2(0,-runSpeed);
       }
-      sprite.Position += delta;
+        sprite.Position += delta;
 
       if(!walking){
         sprite.StopAllActions();
@@ -121,6 +121,9 @@ namespace realjam {
         grabbing.grabbed = false;
         grabbing = null;
       }
+    }
+    public override float GetRadius(){
+       return (sprite.Quad.X.X > sprite.Quad.Y.Y ? sprite.Quad.Y.Y : sprite.Quad.X.X)/2;
     }
   }
 }
