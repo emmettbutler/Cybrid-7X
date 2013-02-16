@@ -9,7 +9,12 @@ using Sce.PlayStation.HighLevel.GameEngine2D.Base;
 namespace realjam {
   public class GameOverScene:Scene {
     public GameOverScene() {
-      this.AddChild(Support.TiledSpriteFromFile("/Application/assets/robot_sheet2.png", 9, 4));
+      Camera.SetViewFromViewport();
+      
+      SpriteTile overs = Support.TiledSpriteFromFile("/Application/assets/cell_0000000054.png", 1, 1);
+      overs.Quad.S = overs.TextureInfo.TextureSizef/2;
+      overs.Position = new Vector2(Camera.CalcBounds().Max.X/2, Camera.CalcBounds().Max.Y/2);
+      AddChild(overs);
     }
   }
 }
