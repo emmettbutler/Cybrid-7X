@@ -72,8 +72,11 @@ namespace realjam {
 
       goalSprite = Support.TiledSpriteFromFile(spritePath, 1, 1);
 
+      goalSprite.CenterSprite();
       goalSprite.Position = sprite.Position;
+      //goalSprite.Position = new Vector2(sprite.Position.X - 60, sprite.Position.Y - 20);
       goalSprite.VertexZ = 1;
+      goalSprite.Quad.S = goalSprite.TextureInfo.TextureSizef;
       scene.AddChild(goalSprite);
     }
 
