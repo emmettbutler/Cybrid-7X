@@ -17,7 +17,7 @@ namespace realjam {
     public SpawnManager(Scene scene, Collider collider) {
       this.collider = collider;
       this.scene = scene;
-      limit = 100;
+      limit = 200;
       cells = new List<Cell>();
       SpawnCell(new Vector2(100, 100), 10);
       SpawnCell(new Vector2(300, 100), 10);

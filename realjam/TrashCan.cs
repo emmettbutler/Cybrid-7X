@@ -14,7 +14,7 @@ namespace realjam {
 
     public TrashCan(Vector2 pos, SpawnManager s) : base(pos) {
       this.s = s;
-      sprite = Support.TiledSpriteFromFile("/Application/assets/eyebulb.png", 1, 1);
+      sprite = Support.TiledSpriteFromFile("/Application/assets/Trash_Object.png", 1, 1);
       sprite.Position = pos;
       sprite.CenterSprite();
     }
@@ -28,14 +28,16 @@ namespace realjam {
       collisionCells = new List<Cell>();
       if(instance is Cell){
         Cell c = (Cell)instance;
-        collisionCells.Add(c);
-        Vector2 cellCenter = c.GetCenter();
-
-        for(var i = 0; i < collisionCells.Count; i++){
-          //s.DestroyCell(collisionCells[i]);
-          collisionCells[i].Visible = false;
-          collisionCells[i].destroyed = true;
-          Console.WriteLine("TRASH!!!");
+        if(c.grabbed){
+          collisionCells.Add(c);
+          Vector2 cellCenter = c.GetCenter();
+  
+          for(var i = 0; i < collisionCells.Count; i++){
+            //s.DestroyCell(collisionCells[i]);
+            collisionCells[i].Visible = false;
+            collisionCells[i].destroyed = true;
+            Console.WriteLine("TRASH!!!");
+          }
         }
       }
     }

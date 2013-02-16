@@ -32,11 +32,11 @@ namespace realjam
 
       SpawnManager spawnmngr = new SpawnManager(scene,collider);
 
-      var goal = new WinSection(new Vector2(scene.Camera.CalcBounds().Max.X-50,scene.Camera.CalcBounds().Max.Y-50),spawnmngr);
+      var goal = new WinSection(new Vector2(scene.Camera.CalcBounds().Max.X-100,scene.Camera.CalcBounds().Max.Y-100),spawnmngr);
       scene.AddChild(goal.sprite);
       //scene.AddChild(goal.spriteoverlay);
       collider.add(goal);
-      var trash = new TrashCan(new Vector2(300,400),spawnmngr);
+      var trash = new TrashCan(new Vector2(scene.Camera.CalcBounds().Min.X+60,scene.Camera.CalcBounds().Max.Y-50),spawnmngr);
       scene.AddChild(trash.sprite);
       collider.add(trash);
 
