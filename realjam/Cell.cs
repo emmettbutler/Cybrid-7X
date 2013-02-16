@@ -85,7 +85,7 @@ namespace realjam {
     }
 
     public static int clampTypeLevels(int type){
-      int[] limits = {7,1,0,0,0,0,0,0,0,0};
+      int[] limits = {7,7,0,0,0,0,0,0,0,0};
       int[] levels = new int[10];
       int input = type;
       int divisor = 1000000000;
