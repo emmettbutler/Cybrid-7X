@@ -22,7 +22,6 @@ namespace realjam {
 
     public override float GetRadius (){
       radius = this.sprite.Quad.X.X;
-      //Console.WriteLine(radius);
       return radius/2;
     }
 
@@ -34,10 +33,9 @@ namespace realjam {
         Vector2 cellCenter = c.GetCenter();
         Vector2 trashCenter = this.GetCenter();
         displacement = trashCenter - cellCenter;
-        Console.WriteLine("might win");
   
         for(var i = 0; i < collisionCells.Count; i++){
-              Console.WriteLine("WINNING???");
+          Console.WriteLine("WINNING???");
         }
       }
     }

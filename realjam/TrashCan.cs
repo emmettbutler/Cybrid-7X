@@ -32,8 +32,10 @@ namespace realjam {
         Vector2 cellCenter = c.GetCenter();
 
         for(var i = 0; i < collisionCells.Count; i++){
-            //s.DestroyCell(collisionCells[i]);
-            Console.WriteLine("TRASH!!!");
+          //s.DestroyCell(collisionCells[i]);
+          collisionCells[i].Visible = false;
+          collisionCells[i].destroyed = true;
+          Console.WriteLine("TRASH!!!");
         }
       }
     }

@@ -16,6 +16,7 @@ namespace realjam {
     private Boolean readyToSpawn;
     private float lastSpawnTime;
     private string spritePath;
+    public Boolean destroyed {get; set;}
     public int type {get; set;}
 
     public Cell(Vector2 pos, int type) : base(pos){
@@ -23,6 +24,7 @@ namespace realjam {
       Random rng = new Random();
       readyToSpawn = false;
       period = 6;
+      destroyed = false;
       lifespan = rng.Next(6, 9);
       refreshPeriod = rng.Next(5, 10);
 
@@ -43,11 +45,14 @@ namespace realjam {
     }
 
     public Boolean shouldDie(List<GameEntity> nearby){
+      if(destroyed == true){
+        return true;
+      }
+
       if(ttime > lifespan){
         if(nearby.Count > 4){
           return false;
         }
-        //return true;
       }
       return false;
     }

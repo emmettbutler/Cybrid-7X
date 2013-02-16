@@ -38,7 +38,7 @@ namespace realjam {
       collider.remove(c);
       scene.RemoveChild(c.sprite,true);
       cells.Remove(c);
-      c.TextureInfo.Dispose();
+      //c.sprite.TextureInfo.Dispose();
     }
 
     public void FrameUpdate(float dt){
