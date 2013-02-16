@@ -42,7 +42,7 @@ namespace realjam {
       if(Input2.GamePad0.Circle.Down && canGrab){
         if(instance is Cell){
           Cell c = (Cell)instance;
-          c.sprite.Position = sprite.Position;
+          //c.sprite.Position = new Vector2(c.sprite.Position.X+10, c.sprite.Position.Y+10);
           c.grabbed = true;
           grabbing = c;
           }
@@ -118,7 +118,9 @@ namespace realjam {
         sprite.StopAllActions();
         walkDirection = WalkDirs.WLK_NONE;
       }
-
+      if(grabbing != null){
+        grabbing.sprite.Position = new Vector2(sprite.Position.X, sprite.Position.Y+70);
+      }
       if(!Input2.GamePad0.Circle.Down && grabbing != null){
         grabbing.grabbed = false;
         grabbing = null;

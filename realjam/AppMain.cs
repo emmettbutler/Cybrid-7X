@@ -27,7 +27,7 @@ namespace realjam
       var collider = new Collider();
 
       var player = new Player(new Vector2(40,10));
-      scene.AddChild(player.sprite,1);
+      scene.AddChild(player.sprite);
       collider.add(player);
 
       SpawnManager spawnmngr = new SpawnManager(scene,collider);
