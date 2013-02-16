@@ -37,6 +37,8 @@ namespace realjam
       scene.AddChild(goal.sprite);
       //scene.AddChild(goal.spriteoverlay);
       collider.add(goal);
+      goal.startNewGoal();
+
       var trash = new TrashCan(new Vector2(scene.Camera.CalcBounds().Min.X+60,scene.Camera.CalcBounds().Max.Y-50),spawnmngr);
       scene.AddChild(trash.sprite);
       collider.add(trash);

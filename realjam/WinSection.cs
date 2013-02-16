@@ -12,9 +12,8 @@ namespace realjam {
     private Vector2 displacement;
     public List<Cell> collisionCells;
     public SpawnManager s;
-    public SpriteTile spriteoverlay;
+    public SpriteTile spriteoverlay, goalSprite;
     public Scene scene;
-    public SpriteTile goalSprite
     public int goalMutation {get; set;}
 
     public WinSection(Vector2 pos, SpawnManager s, Scene scene) : base(pos) {
@@ -43,7 +42,11 @@ namespace realjam {
         displacement = trashCenter - cellCenter;
   
         for(var i = 0; i < collisionCells.Count; i++){
-          Console.WriteLine("WINNING???");
+          if(this.checkCellWin(collisionCells[i])){
+            Console.WriteLine("WINNER");
+          } else {
+            Console.WriteLine("WRONG ONE");
+          }
         }
       }
     }
@@ -53,8 +56,32 @@ namespace realjam {
     }
 
     public void startNewGoal(){
-      goalMutation = 1;
-      goalSprite =
+      int[] goalIndices = new int[10];
+      Random rng = new Random();
+      goalMutation = 0;
+
+      for(int i = 0; i < 10; i++){
+        if(i < 2){
+          goalIndices[i] = rng.Next(1,7);
+          goalMutation += (int)goalIndices[i]*((int)System.Math.Pow(10, i));
+        }
+      }
+
+      String spritePath = "/Application/assets/cell_";
+      spritePath += goalMutation.ToString("D10") + ".png";
+
+      goalSprite = Support.TiledSpriteFromFile(spritePath, 1, 1);
+
+      goalSprite.Position = sprite.Position;
+      goalSprite.VertexZ = 1;
+      scene.AddChild(goalSprite);
+    }
+
+    public Boolean checkCellWin(Cell c){
+      if (c.type == goalMutation){
+        return true;
+      }
+      return false;
     }
   }
 }
