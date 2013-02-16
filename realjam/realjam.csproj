@@ -71,6 +71,12 @@
     <Content Include="assets\cell_0000000005.png" />
     <Content Include="assets\cell_0000000006.png" />
     <Content Include="assets\cell_0000000007.png" />
+    <Content Include="assets\cell_0000000012.png" />
+    <Content Include="assets\cell_0000000013.png" />
+    <Content Include="assets\cell_0000000014.png" />
+    <Content Include="assets\cell_0000000015.png" />
+    <Content Include="assets\cell_0000000016.png" />
+    <Content Include="assets\cell_0000000017.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />
