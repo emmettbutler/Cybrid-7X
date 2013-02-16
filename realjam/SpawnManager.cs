@@ -13,6 +13,7 @@ namespace realjam {
     public List<Cell> cells {get; set;}
     public int limit {get; set;}
     private Random rng;
+    public int onScreenCount;
 
     public SpawnManager(Scene scene, Collider collider) {
       this.collider = collider;
@@ -41,7 +42,12 @@ namespace realjam {
       //c.sprite.TextureInfo.Dispose();
     }
 
+    public Boolean cellsOverLimit(){
+      return cells.Count >= limit;
+    }
+
     public void FrameUpdate(float dt){
+      Console.WriteLine(onScreenCount);
       for (int i = 0; i < cells.Count; i++){
         Cell c = cells[i];
         c.Tick(dt);

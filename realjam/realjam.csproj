@@ -46,6 +46,7 @@
     <Compile Include="Support.cs" />
     <Compile Include="WinSection.cs" />
     <Compile Include="TrashCan.cs" />
+    <Compile Include="GameOverScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <ShaderProgram Include="shaders\Simple.fcg" />
