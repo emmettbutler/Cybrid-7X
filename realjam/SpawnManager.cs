@@ -42,7 +42,6 @@ namespace realjam {
     }
 
     public void FrameUpdate(float dt){
-      //Console.WriteLine("cells count: " + cells.Count);
       for (int i = 0; i < cells.Count; i++){
         Cell c = cells[i];
         c.Tick(dt);
@@ -64,7 +63,6 @@ namespace realjam {
           List<int> offspringTypes = c.OffspringTypes(nearby);
           int typeCounter = 0;
           for(i = 0; i < c.newOffspringCount(nearby); i++){
-            Console.WriteLine(offspringTypes[typeCounter]);
             SpawnCell(new Vector2 (c.sprite.Position.X+rng.Next(-20,20), c.sprite.Position.Y+rng.Next(-20,20)), offspringTypes[typeCounter]);
             if(typeCounter < offspringTypes.Count - 1){
               typeCounter++;

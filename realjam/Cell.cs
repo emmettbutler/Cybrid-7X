@@ -100,7 +100,6 @@ namespace realjam {
         result += divisor*levels[i];
         divisor *= 10;
       }
-      Console.WriteLine(result);
       return result;
     }
 

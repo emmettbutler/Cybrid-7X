@@ -11,6 +11,7 @@ namespace realjam {
     public enum CollisionEntityType{
       Player,
       Cell,
+      Sensor,
     }
 
     public delegate Vector2 GetCenterDelegate();
@@ -37,6 +38,8 @@ namespace realjam {
         entry.type = CollisionEntityType.Player;
       } else if (instance is Cell){
         entry.type = CollisionEntityType.Cell;
+      } else if (instance is WinSection || instance is TrashCan){
+        entry.type = CollisionEntityType.Sensor;
       }
 
       entry.center = instance.GetCenter;

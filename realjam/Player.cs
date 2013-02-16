@@ -39,12 +39,15 @@ namespace realjam {
 
     public override void CollideTo (GameEntity instance){
       Boolean canGrab = (instance == grabbing || grabbing == null);
-      if(instance is Cell && Input2.GamePad0.Circle.Down && canGrab){
-        Cell c = (Cell)instance;
-        c.sprite.Position = sprite.Position;
-        c.grabbed = true;
-        grabbing = c;
+      if(Input2.GamePad0.Circle.Down && canGrab){
+        if(instance is Cell){
+          Cell c = (Cell)instance;
+          c.sprite.Position = sprite.Position;
+          c.grabbed = true;
+          grabbing = c;
+          }
       } else {
+        if(!(instance is Cell)) return;
         Cell c = (Cell)instance;
         //instance.sprite.Position += (instance.sprite.Position-sprite.Position)*.2f;
         Vector2 cellCenter = c.GetCenter();
@@ -71,7 +74,6 @@ namespace realjam {
 
     public override void Tick(float dt){
       base.Tick(dt);
-      Console.WriteLine(sprite.Shader);
       walking = false;
       Vector2 delta = Vector2.Zero;
 

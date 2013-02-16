@@ -44,6 +44,9 @@
     <Compile Include="GameEntity.cs" />
     <Compile Include="Collider.cs" />
     <Compile Include="Support.cs" />
+    <Compile Include="WinSection.cs" />
+    <Compile Include="TrashCan.cs" />
+    <Compile Include="Sensor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ShaderProgram Include="shaders\Simple.fcg" />
