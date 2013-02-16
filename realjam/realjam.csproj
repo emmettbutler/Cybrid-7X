@@ -125,6 +125,8 @@
     <Content Include="assets\cell_0000000076.png" />
     <Content Include="assets\cell_0000000077.png" />
     <Content Include="assets\cell_0000000054.png" />
+    <Content Include="assets\Goal_Object.png" />
+    <Content Include="assets\Goal_Object_Overlay_1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />

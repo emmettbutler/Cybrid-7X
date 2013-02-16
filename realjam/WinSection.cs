@@ -12,12 +12,16 @@ namespace realjam {
     private Vector2 displacement;
     public List<Cell> collisionCells;
     public SpawnManager s;
+    public SpriteTile spriteoverlay;
 
     public WinSection(Vector2 pos, SpawnManager s) : base(pos) {
       this.s = s;
-      sprite = Support.TiledSpriteFromFile("/Application/assets/eyebulb.png", 1, 1);
+      sprite = Support.TiledSpriteFromFile("/Application/assets/Goal_Object.png", 1, 1);
+      spriteoverlay = Support.TiledSpriteFromFile("/Application/assets/Goal_Object_Overlay_1.png", 1, 1);
       sprite.Position = pos;
+      spriteoverlay.Position = pos;
       sprite.CenterSprite();
+      spriteoverlay.CenterSprite();
     }
 
     public override float GetRadius (){

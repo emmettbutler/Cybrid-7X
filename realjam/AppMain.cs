@@ -32,8 +32,9 @@ namespace realjam
 
       SpawnManager spawnmngr = new SpawnManager(scene,collider);
 
-      var goal = new WinSection(new Vector2(200,300),spawnmngr);
+      var goal = new WinSection(new Vector2(scene.Camera.CalcBounds().Max.X-50,scene.Camera.CalcBounds().Max.Y-50),spawnmngr);
       scene.AddChild(goal.sprite);
+      //scene.AddChild(goal.spriteoverlay);
       collider.add(goal);
       var trash = new TrashCan(new Vector2(300,400),spawnmngr);
       scene.AddChild(trash.sprite);
