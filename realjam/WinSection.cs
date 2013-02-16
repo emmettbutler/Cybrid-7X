@@ -13,11 +13,15 @@ namespace realjam {
     public List<Cell> collisionCells;
     public SpawnManager s;
     public SpriteTile spriteoverlay;
+    public Scene scene;
+    public SpriteTile goalSprite
+    public int goalMutation {get; set;}
 
-    public WinSection(Vector2 pos, SpawnManager s) : base(pos) {
+    public WinSection(Vector2 pos, SpawnManager s, Scene scene) : base(pos) {
       this.s = s;
       sprite = Support.TiledSpriteFromFile("/Application/assets/Goal_Object.png", 1, 1);
       spriteoverlay = Support.TiledSpriteFromFile("/Application/assets/Goal_Object_Overlay_1.png", 1, 1);
+      this.scene = scene;
       sprite.Position = pos;
       spriteoverlay.Position = pos;
       sprite.CenterSprite();
@@ -46,6 +50,11 @@ namespace realjam {
 
     public override void CollideFrom(GameEntity instance){
 
+    }
+
+    public void startNewGoal(){
+      goalMutation = 1;
+      goalSprite =
     }
   }
 }
