@@ -142,9 +142,13 @@
     <Content Include="assets\titleScreen.png" />
     <Content Include="assets\display_BAD.png" />
     <Content Include="assets\display_GOOD.png" />
+    <Content Include="assets\sounds\liquid_water_plop.wav" />
+    <Content Include="assets\sounds\match3.wav" />
+    <Content Include="assets\sounds\trash.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />
     <None Include="naming_convention.txt" />
+    <None Include="assets\sounds\fire_ignite-001.wav" />
   </ItemGroup>
 </Project>

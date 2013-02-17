@@ -1,31 +1,30 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="realjam\Support.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Users\Lego-Lab\Documents\GitHub\psm_jam\realjam\Support.cs">
     <Files>
-      <File FileName="realjam\AppMain.cs" Line="34" Column="40" />
-      <File FileName="realjam\Player.cs" Line="119" Column="45" />
-      <File FileName="realjam\GameEntity.cs" Line="15" Column="7" />
-      <File FileName="realjam\SpawnManager.cs" Line="26" Column="7" />
-      <File FileName="realjam\WinSection.cs" Line="76" Column="1" />
-      <File FileName="realjam\TrashCan.cs" Line="6" Column="34" />
-      <File FileName="realjam\GameScene.cs" Line="119" Column="16" />
-      <File FileName="realjam\GameOverScene.cs" Line="5" Column="34" />
-      <File FileName="realjam\Cell.cs" Line="73" Column="21" />
-      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\EnemyZombie.cs" Line="20" Column="15" />
-      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\EnemyBat.cs" Line="36" Column="105" />
-      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\Game.cs" Line="14" Column="33" />
-      <File FileName="..\..\..\..\Public\Documents\PSM\sample\GameEngine2D\ActionGameDemo\ActionGameDemo.cs" Line="1" Column="1" />
-      <File FileName="realjam\Collider.cs" Line="59" Column="42" />
-      <File FileName="realjam\Support.cs" Line="251" Column="1" />
+      <File FileName="realjam\AppMain.cs" Line="32" Column="85" />
+      <File FileName="realjam\Player.cs" Line="134" Column="61" />
+      <File FileName="realjam\GameEntity.cs" Line="17" Column="34" />
+      <File FileName="realjam\Collider.cs" Line="43" Column="34" />
+      <File FileName="realjam\Cell.cs" Line="20" Column="20" />
+      <File FileName="realjam\SpawnManager.cs" Line="58" Column="1" />
+      <File FileName="realjam\WinSection.cs" Line="92" Column="9" />
+      <File FileName="realjam\GameOverScene.cs" Line="12" Column="10" />
+      <File FileName="realjam\GameScene.cs" Line="15" Column="37" />
+      <File FileName="realjam\TrashCan.cs" Line="14" Column="34" />
+      <File FileName="realjam\HelloScene.cs" Line="17" Column="27" />
+      <File FileName="c:\Users\Lego-Lab\Documents\GitHub\psm_jam\realjam\Support.cs" Line="251" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="ActionGameDemo" expanded="True" />
+          <Node name="realjam" expanded="True">
+            <Node name="assets" expanded="True">
+              <Node name="sounds" expanded="True" />
+            </Node>
+            <Node name="Support.cs" selected="True" />
+          </Node>
         </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State />

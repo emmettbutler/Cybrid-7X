@@ -131,7 +131,7 @@ namespace realjam {
       walknone = true;
 
       if(Input2.GamePad0.Square.Down){
-        Support.SoundSystem.Instance.Play("player_sword_attack.wav");
+        Support.SoundSystem.Instance.Play("match3.wav");
         waterClosestPlants();
       }
 
