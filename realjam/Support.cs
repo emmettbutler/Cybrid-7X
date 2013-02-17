@@ -247,6 +247,7 @@ namespace realjam
 				if (SoundDatabase.ContainsKey(name))
 					return;
 
+        Console.WriteLine(AssetsPrefix + name);
 				var sound = new Sound(AssetsPrefix + name);
 				var player = sound.CreatePlayer();
 				SoundDatabase[name] = player;

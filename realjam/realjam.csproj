@@ -48,6 +48,7 @@
     <Compile Include="TrashCan.cs" />
     <Compile Include="GameOverScene.cs" />
     <Compile Include="GameScene.cs" />
+    <Compile Include="HelloScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <ShaderProgram Include="shaders\Simple.fcg" />
@@ -59,6 +60,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />
   <ItemGroup>
     <Folder Include="assets\" />
+    <Folder Include="assets\sounds\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\eyebulb.png" />
@@ -136,6 +138,8 @@
     <Content Include="assets\Rain_Object.png" />
     <Content Include="assets\Screen_Object.png" />
     <Content Include="assets\Water_Object.png" />
+    <Content Include="assets\sounds\player_sword_attack.wav" />
+    <Content Include="assets\titleScreen.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />

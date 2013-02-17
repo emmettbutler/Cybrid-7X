@@ -116,6 +116,7 @@ namespace realjam {
       sprite.Position += delta;
 
       if(Input2.GamePad0.Square.Down){
+        Support.SoundSystem.Instance.Play("player_sword_attack.wav");
         waterClosestPlants();
       }
 
