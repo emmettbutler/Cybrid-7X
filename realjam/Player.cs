@@ -24,6 +24,7 @@ namespace realjam {
 
     private WalkDirs walkDirection;
     private Boolean walking = false;
+    private Boolean carryplant = false;
 
     private Boolean walkup = false;
     private Boolean walkdown = false;
@@ -131,7 +132,7 @@ namespace realjam {
       walknone = true;
 
       if(Input2.GamePad0.Square.Down){
-        Support.SoundSystem.Instance.Play("match3.wav");
+        Support.SoundSystem.Instance.Play("WaterPlop_2.wav");
         waterClosestPlants();
       }
 
@@ -140,6 +141,11 @@ namespace realjam {
         walkDirection = WalkDirs.WLK_NONE;
       }
       if(grabbing != null){
+        carryplant = true;
+        if(carryplant != false){
+          Support.SoundSystem.Instance.Play("grass.wav");
+        }
+        carryplant = false;
         grabbing.sprite.Position = new Vector2(sprite.Position.X, sprite.Position.Y+70);
       }
       if(!Input2.GamePad0.Circle.Down && grabbing != null){

@@ -95,6 +95,7 @@ namespace realjam {
 
     public void flipRaining(){
       if(isRaining){
+        Support.SoundSystem.Instance.Play("rain.wav");
         var rainsprite = Support.TiledSpriteFromFile("/Application/assets/rain_Sheet.png", 9, 1);
         var raincountX = Camera.CalcBounds().Max.X/rainsprite.Quad.X.X;
         var raincountY = Camera.CalcBounds().Max.Y/rainsprite.Quad.Y.Y;

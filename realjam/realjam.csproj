@@ -145,6 +145,10 @@
     <Content Include="assets\sounds\liquid_water_plop.wav" />
     <Content Include="assets\sounds\match3.wav" />
     <Content Include="assets\sounds\trash.wav" />
+    <Content Include="assets\sounds\blip.wav" />
+    <Content Include="assets\sounds\rain.wav" />
+    <Content Include="assets\sounds\WaterPlop_2.wav" />
+    <Content Include="assets\sounds\grass.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />

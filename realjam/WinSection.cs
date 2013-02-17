@@ -13,6 +13,7 @@ namespace realjam {
     public List<Cell> collisionCells;
     public SpriteTile spriteoverlay, goalSprite;
     public int goalMutation {get; set;}
+    private Boolean soundplaying = false;
 
     public WinSection(Vector2 pos) : base(pos) {
       sprite = Support.TiledSpriteFromFile("/Application/assets/Goal_Object.png", 1, 1);
@@ -38,12 +39,13 @@ namespace realjam {
         displacement = trashCenter - cellCenter;
   
         for(var i = 0; i < collisionCells.Count; i++){
-          if(collisionCells[i].grabbed){
-            if(this.checkCellWin(collisionCells[i])){
-              Console.WriteLine("WINNER");
-            } else {
-              Console.WriteLine("WRONG ONE");
-            }
+          if(!soundplaying){
+            soundplaying = true;
+          }
+          if(this.checkCellWin(collisionCells[i])){
+            Console.WriteLine("WINNER");
+          } else {
+            Console.WriteLine("WRONG ONE");
           }
         }
       }
@@ -81,6 +83,7 @@ namespace realjam {
     public Boolean checkCellWin(Cell c){
       Sequence seq;
       if (c.type == goalMutation){
+        //Support.SoundSystem.Instance.Play("blip.wav");
         goalSprite.Visible = false;
         var right = Support.TiledSpriteFromFile("/Application/assets/display_BAD.png", 1, 1);
         GameScene.Instance.AddChild(right);
@@ -90,10 +93,11 @@ namespace realjam {
         right.VertexZ = 1;
         seq = new Sequence();
         seq.Add(new DelayTime(2));
-        seq.Add(new CallFunc(() => { GameScene.Instance.RemoveChild(right, true); goalSprite.Visible = true; }));
+        seq.Add(new CallFunc(() => { GameScene.Instance.RemoveChild(right, true); goalSprite.Visible = true;}));
         GameScene.Instance.RunAction(seq);
         return true;
       }
+      //Support.SoundSystem.Instance.Play("blip.wav");
       goalSprite.Visible = false;
       var wrong = Support.TiledSpriteFromFile("/Application/assets/display_BAD.png", 1, 1);
       wrong.CenterSprite();
@@ -103,7 +107,7 @@ namespace realjam {
       GameScene.Instance.AddChild(wrong);
       seq = new Sequence();
       seq.Add(new DelayTime(2));
-      seq.Add(new CallFunc(() => { GameScene.Instance.RemoveChild(wrong, true); goalSprite.Visible = true; }));
+      seq.Add(new CallFunc(() => { GameScene.Instance.RemoveChild(wrong, true); goalSprite.Visible = true;;}));
       GameScene.Instance.RunAction(seq);
       return false;
     }
