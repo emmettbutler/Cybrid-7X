@@ -24,9 +24,9 @@ namespace realjam {
 
     public void setup(){
       SpawnCell(new Vector2(200, 290), 10);
-      SpawnCell(new Vector2(400, 290), 1);
+      SpawnCell(new Vector2(220, 290), 1);
       SpawnCell(new Vector2(600, 290), 10);
-      SpawnCell(new Vector2(800, 290), 1);
+      SpawnCell(new Vector2(620, 290), 1);
     }
 
     public void SpawnCell(Vector2 pos, int type){
