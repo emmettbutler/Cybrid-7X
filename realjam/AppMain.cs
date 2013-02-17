@@ -27,11 +27,11 @@ namespace realjam
       GameScene.Instance.setup();
       SpawnManager.Instance.setup();
 
-      Director.Instance.RunWithScene(GameScene.Instance, true);
+      HelloScene introScene = new HelloScene();
 
-      Scheduler.Instance.Schedule(GameScene.Instance,SpawnManager.Instance.FrameUpdate,0.0f,false);
-      Scheduler.Instance.Schedule(GameScene.Instance,GameScene.Instance.player.Tick,0.0f,false);
-      Scheduler.Instance.Schedule(GameScene.Instance,GameScene.Instance.Tick,0.0f,false);
+      Director.Instance.RunWithScene(introScene, true);
+
+      Scheduler.Instance.Schedule(introScene,introScene.Tick,0.0f,false);
 
 			while (!Input2.GamePad0.Cross.Press) {
         SystemEvents.CheckEvents();
