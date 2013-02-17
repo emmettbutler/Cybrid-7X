@@ -58,7 +58,7 @@ namespace realjam {
             rainsprite.CenterSprite();
             rainsprite.Position = currentPos;
             rainsprite.VertexZ = 1;
-            this.AddChild(rainsprite,1);
+            //this.AddChild(rainsprite,1);
 
             rain.Add(rainsprite);
             var RainAnimation = new Support.AnimationAction(rainsprite, 9, 1, 1.0f, looping: true);
@@ -77,13 +77,16 @@ namespace realjam {
       var goal = new WinSection(new Vector2(Camera.CalcBounds().Max.X-100,Camera.CalcBounds().Max.Y-100),
                                 spawnmngr,this);
       AddChild(goal.sprite);
-      //scene.AddChild(goal.spriteoverlay);
       collider.add(goal);
       goal.startNewGoal();
 
-      /*var trash = new TrashCan(new Vector2(Camera.CalcBounds().Min.X+60,Camera.CalcBounds().Max.Y-50),spawnmngr);
-      AddChild(trash.sprite);
-      collider.add(trash);*/
+      var goaloverlay = Support.TiledSpriteFromFile("/Application/assets/Screen_Object.png", 10, 4);
+      goaloverlay.CenterSprite();
+      goaloverlay.Position = new Vector2(goal.sprite.Position.X, goal.sprite.Position.Y+35);
+      goaloverlay.VertexZ = 1;
+      this.AddChild(goaloverlay);
+      var ScreenAnimation = new Support.AnimationAction(goaloverlay, 1, 40, 1.0f, looping: true);
+      goaloverlay.RunAction(ScreenAnimation);
     }
   }
 }
