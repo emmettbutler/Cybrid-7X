@@ -140,7 +140,12 @@ namespace realjam {
       for(int i = 0; i < SpawnManager.Instance.cells.Count; i++){
         Vector2 displacement = sprite.Position - SpawnManager.Instance.cells[i].sprite.Position;
         if(displacement.Length() < 80){;
+<<<<<<< Updated upstream
           SpawnManager.Instance.cells[i].watered = true;
+=======
+          sm.cells[i].watered = true;
+          Console.WriteLine("watering");
+>>>>>>> Stashed changes
         }
       }
     }
