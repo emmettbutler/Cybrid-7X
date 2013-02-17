@@ -81,8 +81,6 @@ namespace realjam {
         }
       }
 
-      goalMutation = 11;
-
       String spritePath = "/Application/assets/cell_";
       spritePath += goalMutation.ToString("D10") + ".png";
 
