@@ -21,20 +21,24 @@ namespace realjam
       Director.Instance.GL.Context.Enable(EnableMode.Blend);
       Director.Instance.GL.Context.SetBlendFuncAlpha(BlendFuncMode.ReverseSubtract, BlendFuncFactor.OneMinusSrcAlpha, BlendFuncFactor.OneMinusSrcAlpha);
 
-      var scene = new GameScene();
+      Collider.Instance = new Collider();
+      SpawnManager.Instance = new SpawnManager();
+      GameScene.Instance = new GameScene();
+      GameScene.Instance.setup();
+      SpawnManager.Instance.setup();
 
-      Director.Instance.RunWithScene(scene, true);
+      Director.Instance.RunWithScene(GameScene.Instance, true);
 
-      Scheduler.Instance.Schedule(scene,SpawnManager.Instance.FrameUpdate,0.0f,false);
-      Scheduler.Instance.Schedule(scene,scene.player.Tick,0.0f,false);
+      Scheduler.Instance.Schedule(GameScene.Instance,SpawnManager.Instance.FrameUpdate,0.0f,false);
+      Scheduler.Instance.Schedule(GameScene.Instance,GameScene.Instance.player.Tick,0.0f,false);
 
 			while (!Input2.GamePad0.Cross.Press) {
         SystemEvents.CheckEvents();
         Director.Instance.Update();
         Director.Instance.Render();
 
-        scene.collider.CollideWalls(scene);
-        scene.collider.Collide();
+        Collider.Instance.CollideWalls();
+        Collider.Instance.Collide();
 
         if(SpawnManager.Instance.cellsOverLimit()){
           GameReset();

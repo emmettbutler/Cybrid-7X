@@ -10,37 +10,36 @@ namespace realjam {
 
     public static SpawnManager Instance;
 
-    public GameScene scene {get; set;}
     public Collider collider {get; set;}
     public List<Cell> cells {get; set;}
     public int limit {get; set;}
     private Random rng;
     public int onScreenCount;
 
-    public SpawnManager(GameScene scene, Collider collider) {
-      this.collider = collider;
-      this.scene = scene;
-
+    public SpawnManager() {
       limit = 100;
       cells = new List<Cell>();
+      rng = new Random();
+    }
+
+    public void setup(){
       SpawnCell(new Vector2(100, 100), 10);
       SpawnCell(new Vector2(300, 100), 10);
       SpawnCell(new Vector2(400, 320), 10);
       SpawnCell(new Vector2(430, 320), 1);
-      rng = new Random();
     }
 
     public void SpawnCell(Vector2 pos, int type){
       Cell sprite = new Cell(pos, type);
-      scene.AddChild(sprite.sprite);
+      GameScene.Instance.AddChild(sprite.sprite);
 
-      collider.add(sprite);
+      Collider.Instance.add(sprite);
       cells.Add(sprite);
     }
 
     public void DestroyCell(Cell c){
-      collider.remove(c);
-      scene.RemoveChild(c.sprite,true);
+      Collider.Instance.remove(c);
+      GameScene.Instance.RemoveChild(c.sprite,true);
       cells.Remove(c);
       //c.sprite.TextureInfo.Dispose();
     }
@@ -104,7 +103,7 @@ namespace realjam {
           }
         }
 
-        if(scene.isRaining){
+        if(GameScene.Instance.isRaining){
           RainSpawn(c, nearby);
         } else {
           NotRainingUpdate(c, nearby);

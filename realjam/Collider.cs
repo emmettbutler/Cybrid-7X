@@ -8,6 +8,8 @@ using System.Collections.Generic;
 namespace realjam {
   public class Collider {
 
+    public static Collider Instance;
+
     public enum CollisionEntityType{
       Player,
       Cell,
@@ -53,8 +55,8 @@ namespace realjam {
       collisionEntries.Remove(e);
     }
 
-    public void CollideWalls(Scene scene){
-      Bounds2 bounds = scene.Camera.CalcBounds();
+    public void CollideWalls(){
+      Bounds2 bounds = GameScene.Instance.Camera.CalcBounds();
       for(int i = 0; i < collisionEntries.Count; ++i){
         CollisionEntry entry = collisionEntries[i];
         Vector2 center = entry.center();

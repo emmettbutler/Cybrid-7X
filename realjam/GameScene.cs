@@ -10,13 +10,18 @@ using System.Collections.Generic;
 namespace realjam {
   public class GameScene:Scene {
 
+    public static GameScene Instance;
+
     public Player player {get; set;}
-    public SpawnManager spawnmngr {get; set;}
     public Collider collider {get; set;}
     public Boolean isRaining {get; set;}
     public List<SpriteTile> rain {get; set;}
 
     public GameScene() {
+
+    }
+
+    public void setup(){
       Camera.SetViewFromViewport();
 
       isRaining = false;
@@ -29,13 +34,9 @@ namespace realjam {
 
       Random rng = new Random();
 
-      collider = new Collider();
-
-      SpawnManager.Instance = new SpawnManager(this,collider);
-
       player = new Player(new Vector2(40,10));
       AddChild(player.sprite);
-      collider.add(player);
+      Collider.Instance.add(player);
 
       var fencefront = Support.TiledSpriteFromFile("/Application/assets/Fence_Front.png", 1, 1);
       fencefront.Position = new Vector2((Camera.CalcBounds().Max.X)/2,(Camera.CalcBounds().Min.Y+50)/2);
@@ -72,10 +73,9 @@ namespace realjam {
         }
       }
 
-      var goal = new WinSection(new Vector2(Camera.CalcBounds().Max.X-100,Camera.CalcBounds().Max.Y-100),
-                                spawnmngr,this);
+      var goal = new WinSection(new Vector2(Camera.CalcBounds().Max.X-100,Camera.CalcBounds().Max.Y-100));
       AddChild(goal.sprite);
-      collider.add(goal);
+      Collider.Instance.add(goal);
       goal.startNewGoal();
 
       var goaloverlay = Support.TiledSpriteFromFile("/Application/assets/Screen_Object.png", 10, 4);

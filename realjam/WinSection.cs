@@ -11,16 +11,12 @@ namespace realjam {
     private float radius;
     private Vector2 displacement;
     public List<Cell> collisionCells;
-    public SpawnManager s;
     public SpriteTile spriteoverlay, goalSprite;
-    public Scene scene;
     public int goalMutation {get; set;}
 
-    public WinSection(Vector2 pos, SpawnManager s, Scene scene) : base(pos) {
-      this.s = s;
+    public WinSection(Vector2 pos) : base(pos) {
       sprite = Support.TiledSpriteFromFile("/Application/assets/Goal_Object.png", 1, 1);
       spriteoverlay = Support.TiledSpriteFromFile("/Application/assets/Goal_Object_Overlay_1.png", 1, 1);
-      this.scene = scene;
       sprite.Position = pos;
       spriteoverlay.Position = pos;
       sprite.CenterSprite();
@@ -77,7 +73,7 @@ namespace realjam {
       goalSprite.Position = new Vector2(sprite.Position.X + 10, sprite.Position.Y + 45);
       goalSprite.VertexZ = 1;
       goalSprite.Quad.S = (goalSprite.TextureInfo.TextureSizef)/2;
-      scene.AddChild(goalSprite);
+      GameScene.Instance.AddChild(goalSprite);
     }
 
     public Boolean checkCellWin(Cell c){
@@ -85,15 +81,15 @@ namespace realjam {
       if (c.type == goalMutation){
         goalSprite.Visible = false;
         var right = Support.TiledSpriteFromFile("/Application/assets/display_BAD.png", 1, 1);
-        scene.AddChild(right);
+        GameScene.Instance.AddChild(right);
         right.CenterSprite();
         right.Quad.S = right.TextureInfo.TextureSizef/2;
         right.Position = goalSprite.Position;
         right.VertexZ = 1;
         seq = new Sequence();
         seq.Add(new DelayTime(2));
-        seq.Add(new CallFunc(() => { scene.RemoveChild(right, true); goalSprite.Visible = true; }));
-        scene.RunAction(seq);
+        seq.Add(new CallFunc(() => { GameScene.Instance.RemoveChild(right, true); goalSprite.Visible = true; }));
+        GameScene.Instance.RunAction(seq);
         return true;
       }
       goalSprite.Visible = false;
@@ -102,11 +98,11 @@ namespace realjam {
       wrong.Quad.S = wrong.TextureInfo.TextureSizef/2;
       wrong.Position = goalSprite.Position;
       wrong.VertexZ = 1;
-      scene.AddChild(wrong);
+      GameScene.Instance.AddChild(wrong);
       seq = new Sequence();
       seq.Add(new DelayTime(2));
-      seq.Add(new CallFunc(() => { scene.RemoveChild(wrong, true); goalSprite.Visible = true; }));
-      scene.RunAction(seq);
+      seq.Add(new CallFunc(() => { GameScene.Instance.RemoveChild(wrong, true); goalSprite.Visible = true; }));
+      GameScene.Instance.RunAction(seq);
       return false;
     }
   }
