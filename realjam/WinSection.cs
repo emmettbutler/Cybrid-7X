@@ -38,10 +38,12 @@ namespace realjam {
         displacement = trashCenter - cellCenter;
   
         for(var i = 0; i < collisionCells.Count; i++){
-          if(this.checkCellWin(collisionCells[i])){
-            Console.WriteLine("WINNER");
-          } else {
-            Console.WriteLine("WRONG ONE");
+          if(collisionCells[i].grabbed){
+            if(this.checkCellWin(collisionCells[i])){
+              Console.WriteLine("WINNER");
+            } else {
+              Console.WriteLine("WRONG ONE");
+            }
           }
         }
       }

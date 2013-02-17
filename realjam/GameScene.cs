@@ -77,7 +77,7 @@ namespace realjam {
 
       Console.WriteLine(itime);
 
-      Boolean timerInterval = itime >= 800 && (itime % 800 == 0);
+      Boolean timerInterval = itime >= 1300 && (itime % 1300 == 0);
       if(!isRaining){
         if(timerInterval){
           Console.WriteLine("switch on");

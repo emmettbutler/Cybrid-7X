@@ -24,7 +24,7 @@ namespace realjam {
 
       Random rng = new Random();
       readyToSpawn = false;
-      period = 7;
+      period = 4;
       destroyed = false;
       lifespan = rng.Next(6, 9);
       refreshPeriod = rng.Next(5, 10);
@@ -78,10 +78,10 @@ namespace realjam {
       }
 
       result = clampTypeLevels(result);
-      if(result == 0){
-        result = 1;
+      if(result != 0){
+        types.Add(result);
       }
-      types.Add(result);
+
       return types;
     }
 

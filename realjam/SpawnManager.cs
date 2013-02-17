@@ -23,10 +23,10 @@ namespace realjam {
     }
 
     public void setup(){
-      SpawnCell(new Vector2(100, 100), 10);
-      SpawnCell(new Vector2(300, 100), 10);
-      SpawnCell(new Vector2(400, 320), 10);
-      SpawnCell(new Vector2(430, 320), 1);
+      SpawnCell(new Vector2(200, 290), 10);
+      SpawnCell(new Vector2(400, 290), 1);
+      SpawnCell(new Vector2(600, 290), 10);
+      SpawnCell(new Vector2(800, 290), 1);
     }
 
     public void SpawnCell(Vector2 pos, int type){
@@ -53,6 +53,7 @@ namespace realjam {
         List<int> offspringTypes = c.OffspringTypes(nearby);
         int typeCounter = 0;
         for(int i = 0; i < c.newOffspringCount(nearby); i++){
+          if(offspringTypes.Count == 0) break;
           SpawnCell(new Vector2 (c.sprite.Position.X+rng.Next(-20,20), c.sprite.Position.Y+rng.Next(-20,20)), offspringTypes[typeCounter]);
           if(typeCounter < offspringTypes.Count - 1){
             typeCounter++;
@@ -73,6 +74,7 @@ namespace realjam {
             if(e.watered){
               Console.WriteLine("watered " + c.type);
               List<int> offspringTypes = c.OffspringTypes(nearby);
+              if(offspringTypes.Count == 0) break;
               SpawnCell(new Vector2 (c.sprite.Position.X+rng.Next(-20,20), c.sprite.Position.Y+rng.Next(-20,20)), offspringTypes[0]);
               c.hasReproduced = true;
               c.watered = false;
