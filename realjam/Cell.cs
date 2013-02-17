@@ -17,13 +17,14 @@ namespace realjam {
     private float lastSpawnTime;
     private string spritePath;
     public Boolean destroyed {get; set;}
+    public Boolean watered {get; set;}
     public int type {get; set;}
 
     public Cell(Vector2 pos, int type) : base(pos){
 
       Random rng = new Random();
       readyToSpawn = false;
-      period = 6;
+      period = 7;
       destroyed = false;
       lifespan = rng.Next(6, 9);
       refreshPeriod = rng.Next(5, 10);
