@@ -137,15 +137,23 @@ namespace realjam {
     }
 
     public void waterClosestPlants(){
+      var drops = Support.TiledSpriteFromFile("/Application/assets/Water_Object.png", 13, 1);
+      drops.Position = new Vector2(this.sprite.Position.X+20,this.sprite.Position.Y+10);
+      drops.VertexZ = 1;
+      var WateringAnimation = new Support.AnimationAction(drops, 13, 1, 1.0f, looping: true);
+
+      GameScene.Instance.AddChild(drops);
+
+      var seq = new Sequence();
+      drops.RunAction(WateringAnimation);
+      seq.Add(new DelayTime(.8f));
+      seq.Add(new CallFunc(() => {GameScene.Instance.RemoveChild(drops, true); }));
+      GameScene.Instance.RunAction(seq);
+
       for(int i = 0; i < SpawnManager.Instance.cells.Count; i++){
         Vector2 displacement = sprite.Position - SpawnManager.Instance.cells[i].sprite.Position;
-        if(displacement.Length() < 80){;
-<<<<<<< Updated upstream
+        if(displacement.Length() < 80){
           SpawnManager.Instance.cells[i].watered = true;
-=======
-          sm.cells[i].watered = true;
-          Console.WriteLine("watering");
->>>>>>> Stashed changes
         }
       }
     }
