@@ -25,6 +25,12 @@ namespace realjam {
     private WalkDirs walkDirection;
     private Boolean walking = false;
 
+    private Boolean walkup = false;
+    private Boolean walkdown = false;
+    private Boolean walkright = false;
+    private Boolean walkleft = false;
+    private Boolean walknone = false;
+
     public Player(Vector2 pos) : base(pos){
       sprite = Support.TiledSpriteFromFile("/Application/assets/robot_sheet2.png", 9, 4);
       sprite.CenterSprite();
@@ -79,17 +85,21 @@ namespace realjam {
 
       if(Input2.GamePad0.Right.Down){
         walking = true;
+        walkright = true;
         if(walkDirection != WalkDirs.WLK_RIGHT){
           sprite.StopAllActions();
           sprite.RunAction(WalkRightAnimation);
+
         }
         walkDirection |= WalkDirs.WLK_RIGHT;
         delta = new Vector2(runSpeed,0);
       } else if(Input2.GamePad0.Left.Down){
         walking = true;
+        walkleft = true;
         if(walkDirection != WalkDirs.WLK_LEFT){
           sprite.StopAllActions();
           sprite.RunAction(WalkLeftAnimation);
+
         }
         walkDirection |= WalkDirs.WLK_LEFT;
         delta = new Vector2(-runSpeed,0);
@@ -97,23 +107,28 @@ namespace realjam {
 
       if(Input2.GamePad0.Up.Down){
         walking = true;
+        walkup = true;
         if(walkDirection != WalkDirs.WLK_UP){
           sprite.StopAllActions();
           sprite.RunAction(WalkBackAnimation);
+
         }
         walkDirection |= WalkDirs.WLK_UP;
         delta += new Vector2(0,runSpeed);
       } else if(Input2.GamePad0.Down.Down){
         walking = true;
+        walkdown = true;
         if(walkDirection != WalkDirs.WLK_DOWN){
           sprite.StopAllActions();
           sprite.RunAction(WalkFrontAnimation);
+
         }
         walkDirection |= WalkDirs.WLK_DOWN;
         delta += new Vector2(0,-runSpeed);
       }
 
       sprite.Position += delta;
+      walknone = true;
 
       if(Input2.GamePad0.Square.Down){
         Support.SoundSystem.Instance.Play("player_sword_attack.wav");
@@ -139,7 +154,21 @@ namespace realjam {
 
     public void waterClosestPlants(){
       var drops = Support.TiledSpriteFromFile("/Application/assets/Water_Object.png", 13, 1);
-      drops.Position = new Vector2(this.sprite.Position.X+20,this.sprite.Position.Y+10);
+
+      if(walkdown == true){
+        drops.Position = new Vector2(this.sprite.Position.X-20,this.sprite.Position.Y-50);
+        walkdown = false;
+      } else if(walkleft == true){
+        drops.Position = new Vector2(this.sprite.Position.X-60,this.sprite.Position.Y-40);
+        walkleft = false;
+      } else if(walkright == true){
+        drops.Position = new Vector2(this.sprite.Position.X+20,this.sprite.Position.Y-45);
+        walkright = false;
+      } else if(walkup == true){
+        drops.Position = new Vector2(this.sprite.Position.X-30,this.sprite.Position.Y+50);
+        walkup = false;
+      }
+
       drops.VertexZ = 1;
       var WateringAnimation = new Support.AnimationAction(drops, 13, 1, 1.0f, looping: true);
 

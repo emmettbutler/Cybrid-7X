@@ -140,6 +140,8 @@
     <Content Include="assets\Water_Object.png" />
     <Content Include="assets\sounds\player_sword_attack.wav" />
     <Content Include="assets\titleScreen.png" />
+    <Content Include="assets\display_BAD.png" />
+    <Content Include="assets\display_GOOD.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />

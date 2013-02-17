@@ -10,10 +10,8 @@ namespace realjam {
 
     private float radius;
     public List<Cell> collisionCells;
-    public SpawnManager s;
 
-    public TrashCan(Vector2 pos, SpawnManager s) : base(pos) {
-      this.s = s;
+    public TrashCan(Vector2 pos) : base(pos) {
       sprite = Support.TiledSpriteFromFile("/Application/assets/Trash_Object.png", 1, 1);
       sprite.Position = pos;
       sprite.CenterSprite();
