@@ -25,7 +25,7 @@ namespace realjam
 
       Director.Instance.RunWithScene(scene, true);
 
-      Scheduler.Instance.Schedule(scene,scene.spawnmngr.FrameUpdate,0.0f,false);
+      Scheduler.Instance.Schedule(scene,SpawnManager.Instance.FrameUpdate,0.0f,false);
       Scheduler.Instance.Schedule(scene,scene.player.Tick,0.0f,false);
 
 			while (!Input2.GamePad0.Cross.Press) {
@@ -36,7 +36,7 @@ namespace realjam
         scene.collider.CollideWalls(scene);
         scene.collider.Collide();
 
-        if(scene.spawnmngr.cellsOverLimit()){
+        if(SpawnManager.Instance.cellsOverLimit()){
           GameReset();
         }
 

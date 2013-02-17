@@ -8,6 +8,8 @@ using System.Collections.Generic;
 namespace realjam {
   public class SpawnManager {
 
+    public static SpawnManager Instance;
+
     public GameScene scene {get; set;}
     public Collider collider {get; set;}
     public List<Cell> cells {get; set;}

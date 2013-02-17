@@ -19,7 +19,7 @@ namespace realjam {
     public GameScene() {
       Camera.SetViewFromViewport();
 
-      isRaining = true;
+      isRaining = false;
 
       var bg = Support.TiledSpriteFromFile("/Application/assets/Background_Object.png", 1, 1);
       bg.Position = new Vector2((Camera.CalcBounds().Max.X)/2,(Camera.CalcBounds().Max.Y)/2);
@@ -31,9 +31,9 @@ namespace realjam {
 
       collider = new Collider();
 
-      spawnmngr = new SpawnManager(this,collider);
+      SpawnManager.Instance = new SpawnManager(this,collider);
 
-      player = new Player(new Vector2(40,10), spawnmngr);
+      player = new Player(new Vector2(40,10));
       AddChild(player.sprite);
       collider.add(player);
 
@@ -43,8 +43,6 @@ namespace realjam {
       fencefront.VertexZ = 1;
       this.AddChild(fencefront,0);
       Console.WriteLine(fencefront.Position);
-
-      spawnmngr = new SpawnManager(this,collider);
 
       if(isRaining){
         rain = new List<SpriteTile>();

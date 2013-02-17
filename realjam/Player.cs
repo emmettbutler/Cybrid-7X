@@ -13,7 +13,6 @@ namespace realjam {
     public Support.AnimationAction WalkBackAnimation { get; set; }
     public Support.AnimationAction WalkLeftAnimation { get; set; }
     public Support.AnimationAction WalkRightAnimation { get; set; }
-    public SpawnManager sm {get; set;}
 
     private enum WalkDirs{
       WLK_RIGHT = 0x0001,
@@ -26,8 +25,7 @@ namespace realjam {
     private WalkDirs walkDirection;
     private Boolean walking = false;
 
-    public Player(Vector2 pos, SpawnManager sm) : base(pos){
-      this.sm = sm;
+    public Player(Vector2 pos) : base(pos){
       sprite = Support.TiledSpriteFromFile("/Application/assets/robot_sheet2.png", 9, 4);
       sprite.CenterSprite();
 
@@ -139,10 +137,10 @@ namespace realjam {
     }
 
     public void waterClosestPlants(){
-      for(int i = 0; i < sm.cells.Count; i++){
-        Vector2 displacement = sprite.Position - sm.cells[i].sprite.Position;
+      for(int i = 0; i < SpawnManager.Instance.cells.Count; i++){
+        Vector2 displacement = sprite.Position - SpawnManager.Instance.cells[i].sprite.Position;
         if(displacement.Length() < 80){;
-          sm.cells[i].watered = true;
+          SpawnManager.Instance.cells[i].watered = true;
         }
       }
     }
