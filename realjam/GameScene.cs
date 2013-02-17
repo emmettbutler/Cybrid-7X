@@ -62,7 +62,7 @@ namespace realjam {
 
             rain.Add(rainsprite);
             var RainAnimation = new Support.AnimationAction(rainsprite, 9, 1, 1.0f, looping: true);
-            var Wait = new DelayTime((float)rng.NextDouble() * 4);
+            var Wait = new DelayTime((float)rng.NextDouble() * 2);
             var seq = new Sequence();
             seq.Add(Wait);
             seq.Add(RainAnimation);

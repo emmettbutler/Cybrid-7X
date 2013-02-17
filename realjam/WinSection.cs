@@ -81,9 +81,32 @@ namespace realjam {
     }
 
     public Boolean checkCellWin(Cell c){
+      Sequence seq;
       if (c.type == goalMutation){
+        goalSprite.Visible = false;
+        var right = Support.TiledSpriteFromFile("/Application/assets/display_BAD.png", 1, 1);
+        scene.AddChild(right);
+        right.CenterSprite();
+        right.Quad.S = right.TextureInfo.TextureSizef/2;
+        right.Position = goalSprite.Position;
+        right.VertexZ = 1;
+        seq = new Sequence();
+        seq.Add(new DelayTime(2));
+        seq.Add(new CallFunc(() => { scene.RemoveChild(right, true); goalSprite.Visible = true; }));
+        scene.RunAction(seq);
         return true;
       }
+      goalSprite.Visible = false;
+      var wrong = Support.TiledSpriteFromFile("/Application/assets/display_BAD.png", 1, 1);
+      scene.AddChild(wrong);
+      wrong.CenterSprite();
+      wrong.Quad.S = wrong.TextureInfo.TextureSizef/2;
+      wrong.Position = goalSprite.Position;
+      wrong.VertexZ = 1;
+      seq = new Sequence();
+      seq.Add(new DelayTime(2));
+      seq.Add(new CallFunc(() => { scene.RemoveChild(wrong, true); goalSprite.Visible = true; }));
+      scene.RunAction(seq);
       return false;
     }
   }

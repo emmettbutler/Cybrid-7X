@@ -135,6 +135,8 @@
     <Content Include="assets\rain_Sheet.png" />
     <Content Include="assets\Rain_Object.png" />
     <Content Include="assets\Screen_Object.png" />
+    <Content Include="assets\display_BAD.png" />
+    <Content Include="assets\display_GOOD.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />
