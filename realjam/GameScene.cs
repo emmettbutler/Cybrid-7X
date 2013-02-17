@@ -31,6 +31,7 @@ namespace realjam {
 
       Bgm bgm = new Bgm("/Application/assets/sounds/KIDSFUN.mp3");
       BgmPlayer bgmPlayer = bgm.CreatePlayer();
+      bgmPlayer.Loop = true;
       bgmPlayer.Play();
 
       isRaining = false;
@@ -90,7 +91,7 @@ namespace realjam {
 
     public void flipRaining(){
       if(isRaining){
-        Support.SoundSystem.Instance.Play("rain.wav");
+        //Support.SoundSystem.Instance.Play("rain.wav");
         var rainsprite = Support.TiledSpriteFromFile("/Application/assets/rain_Sheet.png", 9, 1);
         var raincountX = Camera.CalcBounds().Max.X/rainsprite.Quad.X.X;
         var raincountY = Camera.CalcBounds().Max.Y/rainsprite.Quad.Y.Y;
