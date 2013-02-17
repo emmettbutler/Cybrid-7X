@@ -66,7 +66,6 @@
     <Content Include="assets\eyebulb.png" />
     <Content Include="assets\robot.png" />
     <Content Include="assets\robot_sheet2.png" />
-    <Content Include="assets\cell_0000000001.png" />
     <Content Include="assets\cell_0000000010.png" />
     <Content Include="assets\cell_0000000011.png" />
     <Content Include="assets\cell_0000000020.png" />
@@ -105,19 +104,6 @@
     <Content Include="assets\cell_0000000045.png" />
     <Content Include="assets\cell_0000000046.png" />
     <Content Include="assets\cell_0000000047.png" />
-    <Content Include="assets\cell_0000000051.png" />
-    <Content Include="assets\cell_0000000052.png" />
-    <Content Include="assets\cell_0000000053.png" />
-    <Content Include="assets\cell_0000000055.png" />
-    <Content Include="assets\cell_0000000056.png" />
-    <Content Include="assets\cell_0000000057.png" />
-    <Content Include="assets\cell_0000000061.png" />
-    <Content Include="assets\cell_0000000062.png" />
-    <Content Include="assets\cell_0000000063.png" />
-    <Content Include="assets\cell_0000000064.png" />
-    <Content Include="assets\cell_0000000065.png" />
-    <Content Include="assets\cell_0000000066.png" />
-    <Content Include="assets\cell_0000000067.png" />
     <Content Include="assets\cell_0000000071.png" />
     <Content Include="assets\cell_0000000072.png" />
     <Content Include="assets\cell_0000000073.png" />
@@ -125,7 +111,6 @@
     <Content Include="assets\cell_0000000075.png" />
     <Content Include="assets\cell_0000000076.png" />
     <Content Include="assets\cell_0000000077.png" />
-    <Content Include="assets\cell_0000000054.png" />
     <Content Include="assets\Goal_Object.png" />
     <Content Include="assets\Goal_Object_Overlay_1.png" />
     <Content Include="assets\Trash_Object.png" />
@@ -151,6 +136,22 @@
     <Content Include="assets\cell_0000000030.png" />
     <Content Include="assets\cell_0000000034.png" />
     <Content Include="assets\cell_0000000004.png" />
+    <Content Include="assets\cell_0000000051.png" />
+    <Content Include="assets\cell_0000000052.png" />
+    <Content Include="assets\cell_0000000053.png" />
+    <Content Include="assets\cell_0000000054.png" />
+    <Content Include="assets\cell_0000000055.png" />
+    <Content Include="assets\cell_0000000056.png" />
+    <Content Include="assets\cell_0000000057.png" />
+    <Content Include="assets\cell_0000000061.png" />
+    <Content Include="assets\cell_0000000062.png" />
+    <Content Include="assets\cell_0000000063.png" />
+    <Content Include="assets\cell_0000000064.png" />
+    <Content Include="assets\cell_0000000065.png" />
+    <Content Include="assets\cell_0000000066.png" />
+    <Content Include="assets\cell_0000000067.png" />
+    <Content Include="assets\cell_0000000001.png" />
+    <Content Include="assets\sounds\KIDSFUN.mp3" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />

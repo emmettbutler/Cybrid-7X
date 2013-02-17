@@ -3,6 +3,7 @@ using Sce.PlayStation.Core;
 using Sce.PlayStation.Core.Environment;
 using Sce.PlayStation.Core.Graphics;
 using Sce.PlayStation.Core.Input;
+using Sce.PlayStation.Core.Audio;
 using Sce.PlayStation.HighLevel.GameEngine2D;
 using Sce.PlayStation.HighLevel.GameEngine2D.Base;
 using System.Collections.Generic;
@@ -27,6 +28,10 @@ namespace realjam {
 
     public void setup(){
       Camera.SetViewFromViewport();
+
+      Bgm bgm = new Bgm("/Application/assets/sounds/KIDSFUN.mp3");
+      BgmPlayer bgmPlayer = bgm.CreatePlayer();
+      bgmPlayer.Play();
 
       isRaining = false;
       itime = 0;
