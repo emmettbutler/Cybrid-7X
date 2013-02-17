@@ -18,7 +18,7 @@ namespace realjam {
     public SpawnManager(Scene scene, Collider collider) {
       this.collider = collider;
       this.scene = scene;
-      limit = 7;
+      limit = 100;
       cells = new List<Cell>();
       SpawnCell(new Vector2(100, 100), 10);
       SpawnCell(new Vector2(300, 100), 10);
@@ -46,9 +46,8 @@ namespace realjam {
       return cells.Count >= limit;
     }
 
-    public void FrameUpdate(float dt){
-      Console.WriteLine(onScreenCount);
-      for (int i = 0; i < cells.Count; i++){
+    public void RainSpawn(float dt){
+       for (int i = 0; i < cells.Count; i++){
         Cell c = cells[i];
         c.Tick(dt);
         List<GameEntity> nearby = new List<GameEntity>();
@@ -83,6 +82,11 @@ namespace realjam {
           DestroyCell(c);
         }
       }
+    }
+
+    public void FrameUpdate(float dt){
+      RainSpawn(dt);
+      Console.WriteLine(onScreenCount);
     }
   }
 }

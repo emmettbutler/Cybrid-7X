@@ -24,16 +24,16 @@ namespace realjam {
 
       spawnmngr = new SpawnManager(this,collider);
 
-      var goal = new WinSection(new Vector2(Camera.CalcBounds().Max.X-50,Camera.CalcBounds().Max.Y-50),
+      var goal = new WinSection(new Vector2(Camera.CalcBounds().Max.X-100,Camera.CalcBounds().Max.Y-100),
                                 spawnmngr,this);
       AddChild(goal.sprite);
       //scene.AddChild(goal.spriteoverlay);
       collider.add(goal);
       goal.startNewGoal();
 
-      var trash = new TrashCan(new Vector2(Camera.CalcBounds().Min.X+60,Camera.CalcBounds().Max.Y-50),spawnmngr);
+      /*var trash = new TrashCan(new Vector2(Camera.CalcBounds().Min.X+60,Camera.CalcBounds().Max.Y-50),spawnmngr);
       AddChild(trash.sprite);
-      collider.add(trash);
+      collider.add(trash);*/
     }
   }
 }
