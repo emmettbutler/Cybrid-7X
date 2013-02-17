@@ -63,6 +63,10 @@ namespace realjam {
       this.AddChild(goaloverlay);
       var ScreenAnimation = new Support.AnimationAction(goaloverlay, 1, 40, 1.0f, looping: true);
       goaloverlay.RunAction(ScreenAnimation);
+
+      var trash = new TrashCan(new Vector2(GameScene.Instance.Camera.CalcBounds().Min.X+90,GameScene.Instance.Camera.CalcBounds().Max.Y-100));
+      GameScene.Instance.AddChild(trash.sprite);
+      Collider.Instance.add(trash);
     }
 
     public void Tick(float dt){
@@ -121,23 +125,6 @@ namespace realjam {
         }
         rain.Clear();
       }
-
-      var trash = new TrashCan(new Vector2(GameScene.Instance.Camera.CalcBounds().Min.X+90,GameScene.Instance.Camera.CalcBounds().Max.Y-100));
-      GameScene.Instance.AddChild(trash.sprite);
-      Collider.Instance.add(trash);
-
-      var goal = new WinSection(new Vector2(Camera.CalcBounds().Max.X-100,Camera.CalcBounds().Max.Y-90));
-      AddChild(goal.sprite);
-      Collider.Instance.add(goal);
-      goal.startNewGoal();
-
-      var goaloverlay = Support.TiledSpriteFromFile("/Application/assets/Screen_Object.png", 10, 4);
-      goaloverlay.CenterSprite();
-      goaloverlay.Position = new Vector2(goal.sprite.Position.X, goal.sprite.Position.Y+35);
-      goaloverlay.VertexZ = 1;
-      this.AddChild(goaloverlay);
-      var ScreenAnimation = new Support.AnimationAction(goaloverlay, 1, 40, 1.0f, looping: true);
-      goaloverlay.RunAction(ScreenAnimation);
     }
   }
 }

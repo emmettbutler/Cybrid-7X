@@ -32,6 +32,7 @@ namespace realjam {
   
           for(var i = 0; i < collisionCells.Count; i++){
             //s.DestroyCell(collisionCells[i]);
+            Support.SoundSystem.Instance.Play("trash.wav");
             collisionCells[i].Visible = false;
             collisionCells[i].destroyed = true;
             Console.WriteLine("TRASH!!!");
