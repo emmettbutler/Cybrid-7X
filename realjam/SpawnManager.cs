@@ -47,6 +47,7 @@ namespace realjam {
       return cells.Count >= limit;
     }
 
+<<<<<<< Updated upstream
     public void RainSpawn(Cell c, List<GameEntity> nearby){
       if (c.shouldSpawn(nearby) && cells.Count < limit){
         List<int> offspringTypes = c.OffspringTypes(nearby);
@@ -86,6 +87,18 @@ namespace realjam {
 
     public void FrameUpdate(float dt){
       for (int i = 0; i < cells.Count; i++){
+=======
+    public void RainSpawn(float dt){
+
+      var rainsprite = Support.TiledSpriteFromFile("/Application/assets/Rain_Object.png", 1, 1);
+      rainsprite.CenterSprite();
+      scene.AddChild(rainsprite);
+
+      var RainAnimation = new Support.AnimationAction(rainsprite, 9, 1, 1.0f, looping: true);
+      rainsprite.RunAction(RainAnimation);
+
+       for (int i = 0; i < cells.Count; i++){
+>>>>>>> Stashed changes
         Cell c = cells[i];
         c.Tick(dt);
         List<GameEntity> nearby = new List<GameEntity>();
