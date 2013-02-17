@@ -141,10 +141,6 @@ namespace realjam {
         walkDirection = WalkDirs.WLK_NONE;
       }
       if(grabbing != null){
-        carryplant = true;
-        if(carryplant != false){
-          Support.SoundSystem.Instance.Play("grass.wav");
-        }
         carryplant = false;
         grabbing.sprite.Position = new Vector2(sprite.Position.X, sprite.Position.Y+70);
       }

@@ -41,17 +41,10 @@ namespace realjam
         Collider.Instance.CollideWalls();
         Collider.Instance.Collide();
 
-        if(SpawnManager.Instance.cellsOverLimit()){
-          GameReset();
-        }
-
         Director.Instance.GL.Context.SwapBuffers();
         Director.Instance.PostSwap();
 			}
       Director.Terminate();
 		}
-    public static void GameReset(){
-        Director.Instance.ReplaceScene(new GameOverScene());
-    }
 	}
 }

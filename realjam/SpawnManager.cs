@@ -111,6 +111,13 @@ namespace realjam {
           NotRainingUpdate(c, nearby);
         }
 
+        if(cells.Count >= limit){
+          Scheduler.Instance.Unschedule(GameScene.Instance,SpawnManager.Instance.FrameUpdate);
+          Scheduler.Instance.Unschedule(GameScene.Instance,GameScene.Instance.player.Tick);
+          Scheduler.Instance.Unschedule(GameScene.Instance,GameScene.Instance.Tick);
+          Director.Instance.ReplaceScene(new GameOverScene(false));
+        }
+
         if (c.shouldDie(nearby)){
           DestroyCell(c);
         }

@@ -22,6 +22,16 @@ namespace realjam {
       spriteoverlay.Position = pos;
       sprite.CenterSprite();
       spriteoverlay.CenterSprite();
+
+      GameScene.Instance.AddChild(sprite);
+
+      var goaloverlay = Support.TiledSpriteFromFile("/Application/assets/Screen_Object.png", 10, 4);
+      goaloverlay.CenterSprite();
+      goaloverlay.Position = new Vector2(sprite.Position.X, sprite.Position.Y+35);
+      goaloverlay.VertexZ = 1;
+      this.AddChild(goaloverlay);
+      var ScreenAnimation = new Support.AnimationAction(goaloverlay, 1, 40, 1.0f, looping: true);
+      goaloverlay.RunAction(ScreenAnimation);
     }
 
     public override float GetRadius (){
@@ -39,13 +49,18 @@ namespace realjam {
         displacement = trashCenter - cellCenter;
   
         for(var i = 0; i < collisionCells.Count; i++){
-          if(!soundplaying){
-            soundplaying = true;
-          }
-          if(this.checkCellWin(collisionCells[i])){
-            Console.WriteLine("WINNER");
-          } else {
-            Console.WriteLine("WRONG ONE");
+          if(collisionCells[i].grabbed){
+            if(this.checkCellWin(collisionCells[i])){
+              Console.WriteLine("WINNER");
+              Scheduler.Instance.Unschedule(GameScene.Instance,SpawnManager.Instance.FrameUpdate);
+              Scheduler.Instance.Unschedule(GameScene.Instance,GameScene.Instance.player.Tick);
+              Scheduler.Instance.Unschedule(GameScene.Instance,GameScene.Instance.Tick);
+              GameOverScene.Instance = new GameOverScene(true);
+              Director.Instance.ReplaceScene(GameOverScene.Instance);
+              Scheduler.Instance.Schedule(GameOverScene.Instance,GameOverScene.Instance.Tick, 0.0f, false);
+            } else {
+              Console.WriteLine("WRONG ONE");
+            }
           }
         }
       }
@@ -67,6 +82,8 @@ namespace realjam {
         }
       }
 
+      goalMutation = 11;
+
       String spritePath = "/Application/assets/cell_";
       spritePath += goalMutation.ToString("D10") + ".png";
 
@@ -85,7 +102,7 @@ namespace realjam {
       if (c.type == goalMutation){
         //Support.SoundSystem.Instance.Play("blip.wav");
         goalSprite.Visible = false;
-        var right = Support.TiledSpriteFromFile("/Application/assets/display_BAD.png", 1, 1);
+        var right = Support.TiledSpriteFromFile("/Application/assets/display_GOOD.png", 1, 1);
         GameScene.Instance.AddChild(right);
         right.CenterSprite();
         right.Quad.S = right.TextureInfo.TextureSizef/2;

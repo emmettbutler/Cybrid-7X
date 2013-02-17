@@ -150,6 +150,7 @@
     <Content Include="assets\sounds\WaterPlop_2.wav" />
     <Content Include="assets\sounds\grass.wav" />
     <Content Include="assets\game_over.png" />
+    <Content Include="assets\WinScreen_2Frames.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />
