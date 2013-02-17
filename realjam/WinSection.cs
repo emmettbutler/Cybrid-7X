@@ -67,7 +67,6 @@ namespace realjam {
     }
 
     public override void CollideFrom(GameEntity instance){
-
     }
 
     public void startNewGoal(){
