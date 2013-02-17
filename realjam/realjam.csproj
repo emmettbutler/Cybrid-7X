@@ -132,7 +132,7 @@
     <Content Include="assets\Trash_Object.png" />
     <Content Include="assets\Background_Object.png" />
     <Content Include="assets\Fence_Front.png" />
-    <Content Include="assets\Rain_Object.png" />
+    <Content Include="assets\rain_Sheet.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />

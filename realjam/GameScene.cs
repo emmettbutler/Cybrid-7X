@@ -27,6 +27,8 @@ namespace realjam {
       bg.VertexZ = 0;
       this.AddChild(bg,0);
 
+      Random rng = new Random();
+
       collider = new Collider();
 
       spawnmngr = new SpawnManager(this,collider);
@@ -46,13 +48,13 @@ namespace realjam {
 
       if(isRaining){
         rain = new List<SpriteTile>();
-        var rainsprite = Support.TiledSpriteFromFile("/Application/assets/Rain_Object.png", 9, 1);
+        var rainsprite = Support.TiledSpriteFromFile("/Application/assets/rain_Sheet.png", 9, 1);
         var raincountX = Camera.CalcBounds().Max.X/rainsprite.Quad.X.X;
         var raincountY = Camera.CalcBounds().Max.Y/rainsprite.Quad.Y.Y;
         var currentPos = new Vector2(0, 20);
         for(var i = 0; i < raincountY; i++){
           for(int j = 0; j < raincountX; j++){
-            rainsprite = Support.TiledSpriteFromFile("/Application/assets/Rain_Object.png", 9, 1);
+            rainsprite = Support.TiledSpriteFromFile("/Application/assets/rain_Sheet.png", 9, 1);
             rainsprite.CenterSprite();
             rainsprite.Position = currentPos;
             rainsprite.VertexZ = 1;
@@ -60,7 +62,11 @@ namespace realjam {
 
             rain.Add(rainsprite);
             var RainAnimation = new Support.AnimationAction(rainsprite, 9, 1, 1.0f, looping: true);
-            rainsprite.RunAction(RainAnimation);
+            var Wait = new DelayTime((float)rng.NextDouble() * 4);
+            var seq = new Sequence();
+            seq.Add(Wait);
+            seq.Add(RainAnimation);
+            rainsprite.RunAction(seq);
 
             currentPos += new Vector2(rainsprite.Quad.X.X, 0);
           }

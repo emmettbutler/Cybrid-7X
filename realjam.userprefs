@@ -2,21 +2,24 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="realjam\Player.cs">
     <Files>
-      <File FileName="realjam\AppMain.cs" Line="27" Column="11" />
-      <File FileName="realjam\Player.cs" Line="63" Column="82" />
+      <File FileName="realjam\AppMain.cs" Line="31" Column="11" />
+      <File FileName="realjam\Player.cs" Line="146" Column="6" />
       <File FileName="realjam\GameEntity.cs" Line="12" Column="30" />
-      <File FileName="realjam\Collider.cs" Line="49" Column="26" />
-      <File FileName="realjam\SpawnManager.cs" Line="68" Column="45" />
-      <File FileName="realjam\Cell.cs" Line="111" Column="38" />
+      <File FileName="realjam\SpawnManager.cs" Line="96" Column="8" />
+      <File FileName="realjam\WinSection.cs" Line="73" Column="63" />
+      <File FileName="realjam\TrashCan.cs" Line="6" Column="34" />
+      <File FileName="realjam\GameScene.cs" Line="25" Column="78" />
+      <File FileName="realjam\GameOverScene.cs" Line="5" Column="34" />
+      <File FileName="realjam\Cell.cs" Line="130" Column="7" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="realjam" expanded="True">
-            <Node name="assets" expanded="True" />
-            <Node name="Player.cs" selected="True" />
-          </Node>
+          <Node name="HelloSprite" expanded="True" />
         </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State />
