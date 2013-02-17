@@ -16,15 +16,21 @@ namespace realjam {
     public Collider collider {get; set;}
     public Boolean isRaining {get; set;}
     public List<SpriteTile> rain {get; set;}
+    public DateTime borntime;
+    public float ttime;
+    public int itime;
+    private Random rng;
 
     public GameScene() {
-
+      borntime = DateTime.UtcNow;
     }
 
     public void setup(){
       Camera.SetViewFromViewport();
 
       isRaining = false;
+      itime = 0;
+      rain = new List<SpriteTile>();
 
       var bg = Support.TiledSpriteFromFile("/Application/assets/Background_Object.png", 1, 1);
       bg.Position = new Vector2((Camera.CalcBounds().Max.X)/2,(Camera.CalcBounds().Max.Y)/2);
@@ -32,7 +38,7 @@ namespace realjam {
       bg.VertexZ = 0;
       this.AddChild(bg,0);
 
-      Random rng = new Random();
+      rng = new Random();
 
       player = new Player(new Vector2(40,10));
       AddChild(player.sprite);
@@ -45,8 +51,46 @@ namespace realjam {
       this.AddChild(fencefront,0);
       Console.WriteLine(fencefront.Position);
 
+      var goal = new WinSection(new Vector2(Camera.CalcBounds().Max.X-100,Camera.CalcBounds().Max.Y-100));
+      AddChild(goal.sprite);
+      Collider.Instance.add(goal);
+      goal.startNewGoal();
+
+      var goaloverlay = Support.TiledSpriteFromFile("/Application/assets/Screen_Object.png", 10, 4);
+      goaloverlay.CenterSprite();
+      goaloverlay.Position = new Vector2(goal.sprite.Position.X, goal.sprite.Position.Y+35);
+      goaloverlay.VertexZ = 1;
+      this.AddChild(goaloverlay);
+      var ScreenAnimation = new Support.AnimationAction(goaloverlay, 1, 40, 1.0f, looping: true);
+      goaloverlay.RunAction(ScreenAnimation);
+    }
+
+    public void Tick(float dt){
+      TimeSpan t = DateTime.UtcNow - borntime;
+      ttime = (float) t.TotalMilliseconds/1000.0f;
+
+      itime += 1;
+
+      Console.WriteLine(itime);
+
+      Boolean timerInterval = itime >= 800 && (itime % 800 == 0);
+      if(!isRaining){
+        if(timerInterval){
+          Console.WriteLine("switch on");
+          isRaining = true;
+          flipRaining();
+        }
+      } else {
+        if(timerInterval){
+          Console.WriteLine("switch off");
+          isRaining = false;
+          flipRaining();
+        }
+      }
+    }
+
+    public void flipRaining(){
       if(isRaining){
-        rain = new List<SpriteTile>();
         var rainsprite = Support.TiledSpriteFromFile("/Application/assets/rain_Sheet.png", 9, 1);
         var raincountX = Camera.CalcBounds().Max.X/rainsprite.Quad.X.X;
         var raincountY = Camera.CalcBounds().Max.Y/rainsprite.Quad.Y.Y;
@@ -71,20 +115,12 @@ namespace realjam {
           }
           currentPos = new Vector2(0, currentPos.Y + rainsprite.Quad.Y.Y);
         }
+      } else {
+        for(int i = 0; i < rain.Count; i++){
+          GameScene.Instance.RemoveChild(rain[i], true);
+        }
+        rain.Clear();
       }
-
-      var goal = new WinSection(new Vector2(Camera.CalcBounds().Max.X-100,Camera.CalcBounds().Max.Y-100));
-      AddChild(goal.sprite);
-      Collider.Instance.add(goal);
-      goal.startNewGoal();
-
-      var goaloverlay = Support.TiledSpriteFromFile("/Application/assets/Screen_Object.png", 10, 4);
-      goaloverlay.CenterSprite();
-      goaloverlay.Position = new Vector2(goal.sprite.Position.X, goal.sprite.Position.Y+35);
-      goaloverlay.VertexZ = 1;
-      this.AddChild(goaloverlay);
-      var ScreenAnimation = new Support.AnimationAction(goaloverlay, 1, 40, 1.0f, looping: true);
-      goaloverlay.RunAction(ScreenAnimation);
     }
   }
 }

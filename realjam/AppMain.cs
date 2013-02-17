@@ -31,6 +31,7 @@ namespace realjam
 
       Scheduler.Instance.Schedule(GameScene.Instance,SpawnManager.Instance.FrameUpdate,0.0f,false);
       Scheduler.Instance.Schedule(GameScene.Instance,GameScene.Instance.player.Tick,0.0f,false);
+      Scheduler.Instance.Schedule(GameScene.Instance,GameScene.Instance.Tick,0.0f,false);
 
 			while (!Input2.GamePad0.Cross.Press) {
         SystemEvents.CheckEvents();
