@@ -98,11 +98,11 @@ namespace realjam {
       }
       goalSprite.Visible = false;
       var wrong = Support.TiledSpriteFromFile("/Application/assets/display_BAD.png", 1, 1);
-      scene.AddChild(wrong);
       wrong.CenterSprite();
       wrong.Quad.S = wrong.TextureInfo.TextureSizef/2;
       wrong.Position = goalSprite.Position;
       wrong.VertexZ = 1;
+      scene.AddChild(wrong);
       seq = new Sequence();
       seq.Add(new DelayTime(2));
       seq.Add(new CallFunc(() => { scene.RemoveChild(wrong, true); goalSprite.Visible = true; }));

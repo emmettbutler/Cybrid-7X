@@ -58,7 +58,7 @@ namespace realjam {
             rainsprite.CenterSprite();
             rainsprite.Position = currentPos;
             rainsprite.VertexZ = 1;
-            //this.AddChild(rainsprite,1);
+            this.AddChild(rainsprite,1);
 
             rain.Add(rainsprite);
             var RainAnimation = new Support.AnimationAction(rainsprite, 9, 1, 1.0f, looping: true);
