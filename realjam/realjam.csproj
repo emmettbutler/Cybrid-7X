@@ -70,10 +70,8 @@
     <Content Include="assets\cell_0000000010.png" />
     <Content Include="assets\cell_0000000011.png" />
     <Content Include="assets\cell_0000000020.png" />
-    <Content Include="assets\cell_0000000030.png" />
     <Content Include="assets\cell_0000000002.png" />
     <Content Include="assets\cell_0000000003.png" />
-    <Content Include="assets\cell_0000000004.png" />
     <Content Include="assets\cell_0000000005.png" />
     <Content Include="assets\cell_0000000006.png" />
     <Content Include="assets\cell_0000000007.png" />
@@ -97,7 +95,6 @@
     <Content Include="assets\cell_0000000031.png" />
     <Content Include="assets\cell_0000000032.png" />
     <Content Include="assets\cell_0000000033.png" />
-    <Content Include="assets\cell_0000000034.png" />
     <Content Include="assets\cell_0000000035.png" />
     <Content Include="assets\cell_0000000036.png" />
     <Content Include="assets\cell_0000000037.png" />
@@ -151,6 +148,9 @@
     <Content Include="assets\sounds\grass.wav" />
     <Content Include="assets\game_over.png" />
     <Content Include="assets\WinScreen_2Frames.png" />
+    <Content Include="assets\cell_0000000030.png" />
+    <Content Include="assets\cell_0000000034.png" />
+    <Content Include="assets\cell_0000000004.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />

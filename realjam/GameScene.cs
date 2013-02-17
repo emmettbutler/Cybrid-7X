@@ -52,7 +52,7 @@ namespace realjam {
       Console.WriteLine(fencefront.Position);
 
       var goal = new WinSection(new Vector2(Camera.CalcBounds().Max.X-100,Camera.CalcBounds().Max.Y-100));
-      
+
       Collider.Instance.add(goal);
       goal.startNewGoal();
 

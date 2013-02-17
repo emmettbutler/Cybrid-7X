@@ -25,6 +25,11 @@ namespace realjam {
       bg.CenterSprite();
       bg.VertexZ = 0;
       this.AddChild(bg,0);
+
+      if(win){
+        Support.AnimationAction animation = new Support.AnimationAction(bg, 1, 2, 1.0f, looping: true);
+        bg.RunAction(animation);
+      }
     }
 
     public void Tick(float dt){
