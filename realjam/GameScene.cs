@@ -16,11 +16,23 @@ namespace realjam {
     public GameScene() {
       Camera.SetViewFromViewport();
 
+      var bg = Support.TiledSpriteFromFile("/Application/assets/Background_Object.png", 1, 1);
+      bg.Position = new Vector2((Camera.CalcBounds().Max.X)/2,(Camera.CalcBounds().Max.Y)/2);
+      bg.CenterSprite();
+      this.AddChild(bg,0);
+
       collider = new Collider();
 
       player = new Player(new Vector2(40,10));
       AddChild(player.sprite);
       collider.add(player);
+
+      var fencefront = Support.TiledSpriteFromFile("/Application/assets/Fence_Front.png", 1, 1);
+      fencefront.Position = new Vector2((Camera.CalcBounds().Max.X)/2,(Camera.CalcBounds().Min.Y+50)/2);
+      fencefront.CenterSprite();
+      fencefront.VertexZ = 1;
+      this.AddChild(fencefront,1);
+      Console.WriteLine(fencefront.Position);
 
       spawnmngr = new SpawnManager(this,collider);
 

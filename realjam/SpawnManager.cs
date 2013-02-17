@@ -86,7 +86,6 @@ namespace realjam {
 
     public void FrameUpdate(float dt){
       RainSpawn(dt);
-      Console.WriteLine(onScreenCount);
     }
   }
 }

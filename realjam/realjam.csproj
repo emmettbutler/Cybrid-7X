@@ -130,6 +130,8 @@
     <Content Include="assets\Goal_Object.png" />
     <Content Include="assets\Goal_Object_Overlay_1.png" />
     <Content Include="assets\Trash_Object.png" />
+    <Content Include="assets\Background_Object.png" />
+    <Content Include="assets\Fence_Front.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TODO.txt" />
