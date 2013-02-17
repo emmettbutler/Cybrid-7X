@@ -129,7 +129,6 @@ namespace realjam {
       }
 
       sprite.Position += delta;
-      walknone = true;
 
       if(Input2.GamePad0.Square.Down){
         Support.SoundSystem.Instance.Play("WaterPlop_2.wav");
@@ -139,6 +138,7 @@ namespace realjam {
       if(!walking){
         sprite.StopAllActions();
         walkDirection = WalkDirs.WLK_NONE;
+        walknone = true;
       }
       if(grabbing != null){
         carryplant = false;
@@ -155,32 +155,60 @@ namespace realjam {
     }
 
     public void waterClosestPlants(){
-      var drops = Support.TiledSpriteFromFile("/Application/assets/Water_Object.png", 13, 1);
 
-      if(walkdown == true){
+      var drops2 = Support.TiledSpriteFromFile("/Application/assets/Water_Object.png", 13, 1);
+      drops2.Position = new Vector2(this.sprite.Position.X-75,this.sprite.Position.Y-40);
+
+      var drops3 = Support.TiledSpriteFromFile("/Application/assets/Water_Object.png", 13, 1);
+      drops3.Position = new Vector2(this.sprite.Position.X+20,this.sprite.Position.Y-40);
+
+      /*if(walkdown == true){
         drops.Position = new Vector2(this.sprite.Position.X-20,this.sprite.Position.Y-50);
-        walkdown = false;
+        walkleft = false;
+        walkright = false;
+        walkup = false;
       } else if(walkleft == true){
         drops.Position = new Vector2(this.sprite.Position.X-60,this.sprite.Position.Y-40);
-        walkleft = false;
+        walkright = false;
+        walkdown = false;
+        walkup = false;
       } else if(walkright == true){
         drops.Position = new Vector2(this.sprite.Position.X+20,this.sprite.Position.Y-45);
-        walkright = false;
+        walkleft = false;
+        walkdown = false;
+        walkup = false;
       } else if(walkup == true){
         drops.Position = new Vector2(this.sprite.Position.X-30,this.sprite.Position.Y+50);
+        walkleft = false;
+        walkright = false;
+        walkdown = false;
+      } else if(walknone == true){
+        drops.Position = new Vector2(this.sprite.Position.X-30,this.sprite.Position.Y+50);
+        walkleft = false;
+        walkright = false;
         walkup = false;
-      }
+        walkdown = false;
+      }*/
 
-      drops.VertexZ = 1;
-      var WateringAnimation = new Support.AnimationAction(drops, 13, 1, 1.0f, looping: true);
+      drops2.VertexZ = 1;
+      drops3.VertexZ = 1;
+      var WateringAnimation2 = new Support.AnimationAction(drops2, 13, 1, 1.0f, looping: true);
+      var WateringAnimation3 = new Support.AnimationAction(drops3, 13, 1, 1.0f, looping: true);
 
-      GameScene.Instance.AddChild(drops);
+      GameScene.Instance.AddChild(drops2);
+      GameScene.Instance.AddChild(drops3);
 
-      var seq = new Sequence();
-      drops.RunAction(WateringAnimation);
-      seq.Add(new DelayTime(.8f));
-      seq.Add(new CallFunc(() => {GameScene.Instance.RemoveChild(drops, true); }));
-      GameScene.Instance.RunAction(seq);
+      var seq2 = new Sequence();
+      drops2.RunAction(WateringAnimation2);
+      seq2.Add(new DelayTime(.8f));
+      seq2.Add(new CallFunc(() => {GameScene.Instance.RemoveChild(drops2, true); }));
+      GameScene.Instance.RunAction(seq2);
+
+      var seq3 = new Sequence();
+      drops3.RunAction(WateringAnimation3);
+      seq3.Add(new DelayTime(.8f));
+      seq3.Add(new CallFunc(() => {GameScene.Instance.RemoveChild(drops3, true); }));
+      GameScene.Instance.RunAction(seq3);
 
       for(int i = 0; i < SpawnManager.Instance.cells.Count; i++){
         Vector2 displacement = sprite.Position - SpawnManager.Instance.cells[i].sprite.Position;
